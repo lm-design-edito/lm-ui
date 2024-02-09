@@ -1,0 +1,17 @@
+.wrapper {
+  background-color: lavender;
+  max-width: 1100px;
+}
+
+.section__cards {
+  --gap: 8px;
+  margin-left: calc(-1 * var(--gap));
+  margin-right: calc(-1 * var(--gap));
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section__card {
+  padding: var(--gap);
+  width: calc(100% / var(--per-line, 2));
+}

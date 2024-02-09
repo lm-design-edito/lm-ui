@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "find . -name \".DS_Store\" -type f -delete",
+    "build-scripts": "npx tsc --project ./scripts/tsconfig.json",
+    "build-src": "npm run build-scripts && node ./scripts/index.js",
+    "serve": "npx http-server --port 8080 --cors -c-1",
+    "start": "npx concurrently -n 'clean,build,serve' 'npm run clean' 'npm run build-src' 'npm run serve'"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/lm-design-edito/lm-ui/issues"
   },
-  "homepage": "https://github.com/lm-design-edito/lm-ui#readme"
+  "homepage": "https://github.com/lm-design-edito/lm-ui#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "esbuild": "^0.20.0",
+    "esbuild-sass-plugin": "^3.0.0",
+    "postcss": "^8.4.35",
+    "postcss-modules": "^6.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "preact": "^10.19.4"
+  }
 }

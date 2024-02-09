@@ -42,7 +42,8 @@ export default class App extends Component<Props, State> {
         <Header />
       </div>
       <div className={styles['home-slot']}>
-        <Home togglePage={this.togglePage} />
+        <Home
+          togglePage={this.togglePage} />
         <button onClick={() => this.togglePage(null)}>
           Toggle
         </button>

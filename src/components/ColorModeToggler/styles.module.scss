@@ -1,0 +1,30 @@
+.wrapper {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggler {
+  height: 24px;
+  width: 50px;
+  padding: 2px;
+  background-color: #DADADA;
+  border-radius: 1000px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.toggler-button {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 1000px;
+  background-color: white;
+  box-shadow: 0 0 20px 0 rgb(0, 0, 0, .5);
+  transition: margin-left 400ms;
+}
+
+.wrapper.wrapper_toggled .toggler-button {
+  margin-left: 26px;
+}
+

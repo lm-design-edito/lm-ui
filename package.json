@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "find . -name \".DS_Store\" -type f -delete",
     "build-scripts": "npx tsc --project ./scripts/tsconfig.json",
-    "build-src": "npm run build-scripts && node ./scripts/index.js",
-    "serve": "npx http-server --port 8080 --cors -c-1",
+    "build-src": "npm run build-scripts && node ./scripts/build.js",
+    "serve": "npx http-server ./dist --port 8080 --cors -c-1",
     "start": "npx concurrently -n 'clean,build,serve' 'npm run clean' 'npm run build-src' 'npm run serve'"
   },
   "repository": {
@@ -22,11 +22,15 @@
   },
   "homepage": "https://github.com/lm-design-edito/lm-ui#readme",
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.17",
+    "chokidar": "^3.6.0",
     "esbuild": "^0.20.0",
     "esbuild-sass-plugin": "^3.0.0",
+    "fs-extra": "^11.2.0",
     "postcss": "^8.4.35",
     "postcss-modules": "^6.0.0",
+    "sass": "^1.70.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {

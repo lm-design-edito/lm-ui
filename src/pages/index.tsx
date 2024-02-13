@@ -2,14 +2,15 @@ import { VNode } from 'preact'
 
 export type Page = {
   id: string,
-  name: string | VNode,
+  name: string | VNode
   thumbUrl: string
+  content: string | VNode
 }
 
 export type PageGroup = {
   id: string,
-  name: string | VNode,
-  cardsPerLine: number,
+  name: string | VNode
+  cardsPerLine: number
   pages: Page[]
 }
 
@@ -24,11 +25,13 @@ export const pageGroups: PageGroup[] = [{
   pages: [{
     id: 'scrllgngn',
     name: 'Scrllgngn',
-    thumbUrl: 'thumb-url.com/img.jpg'
+    thumbUrl: 'thumb-url.com/img.jpg',
+    content: <>The content of Scrllgngn.</>
   }, {
     id: 'audioquote',
     name: 'Audioquote',
-    thumbUrl: 'thumb-url.com/img.jpg'
+    thumbUrl: 'thumb-url.com/img.jpg',
+    content: <>The content of Audioquote.</>
   }]
 }, {
 
@@ -50,7 +53,7 @@ export const pageGroups: PageGroup[] = [{
   pages: []
 }]
 
-export function getGroup (id: string) {
+export function getPageGroup (id: string) {
   return pageGroups.find(group => group.id === id)
 }
 

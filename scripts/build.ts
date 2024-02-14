@@ -3,11 +3,12 @@ import { promises as fs } from 'node:fs'
 import fse from 'fs-extra'
 import chokidar from 'chokidar'
 import * as sass from 'sass'
-import { context } from 'esbuild'
+import { context, BuildOptions } from 'esbuild'
 import { sassPlugin, postcssModules } from 'esbuild-sass-plugin'
 
 // Bundle src to dist/demo
-const buildOptions = {
+const buildOptions: BuildOptions = {
+  format: 'esm',
   entryPoints: [path.join(process.cwd(), 'src/app.tsx')],
   bundle: true,
   outfile: path.join(process.cwd(), 'dist/demo/app.js'),

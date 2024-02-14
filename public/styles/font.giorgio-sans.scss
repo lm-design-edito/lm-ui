@@ -1,0 +1,47 @@
+/* Light */
+@font-face {
+  font-family: "Giorgio-Sans";
+  src:
+    url(../fonts/gis/300.woff2) format("woff2"),
+    url(../fonts/gis/300.woff) format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/* Regular */
+@font-face {
+  font-family: "Giorgio-Sans";
+  src:
+    url(../fonts/gis/400.woff2) format("woff2"),
+    url(../fonts/gis/400.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Giorgio-Sans";
+  src:
+    url(../fonts/gis/700.woff2) format("woff2"),
+    url(../fonts/gis/700.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/* Black */
+@font-face {
+  font-family: "Giorgio-Sans";
+  src:
+    url(../fonts/gis/900.woff2) format("woff2"),
+    url(../fonts/gis/900.woff) format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+:root, :host {
+  --lmui-ff-giorgio-sans: "Giorgio-Sans", Helvetica, Arial, Roboto, sans-serif;
+}

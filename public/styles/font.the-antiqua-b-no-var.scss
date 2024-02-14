@@ -1,0 +1,68 @@
+/* Medium */
+@font-face {
+  font-family: "The-Antiqua-B";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url(../fonts/tab/500.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/tab/500.woff2) format("woff2"),
+    url(../fonts/tab/500.woff) format("woff"),
+    url(../fonts/tab/500.svg#TheAntiquaB_LT_500) format("svg");
+}
+
+/* Medium - italic */
+@font-face {
+  font-family: "The-Antiqua-B";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 500;
+  src:
+    url(../fonts/tab/500-i.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/tab/500-i.woff2) format("woff2"),
+    url(../fonts/tab/500-i.woff) format("woff"),
+    url(../fonts/tab/500-i.svg#TheAntiquaB_LT_500_italic) format("svg");
+}
+
+/* Bold */
+@font-face {
+  font-family: "The-Antiqua-B";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(../fonts/tab/700.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/tab/700.woff2) format("woff2"),
+    url(../fonts/tab/700.woff) format("woff"),
+    url(../fonts/tab/700.svg#TheAntiquaB_LT_700) format("svg");
+}
+
+/* Bold - italic */
+@font-face {
+  font-family: "The-Antiqua-B";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url(../fonts/tab/700-i.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/tab/700-i.woff2) format("woff2"),
+    url(../fonts/tab/700-i.woff) format("woff"),
+    url(../fonts/tab/700-i.svg#TheAntiquaB_LT_700_i) format("svg");
+}
+
+/* Ultrabold */
+@font-face {
+  font-family: "The-Antiqua-B";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 800;
+  src:
+    url(../fonts/tab/800.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/tab/800.woff2) format("woff2"),
+    url(../fonts/tab/800.woff) format("woff"),
+    url(../fonts/tab/800.svg#TheAntiquaB_LT_800) format("svg");
+}
+
+:root, :host {
+  --lmui-ff-the-antiqua-b-non-variable:  "The-Antiqua-B", Garamond, Times, serif;
+}

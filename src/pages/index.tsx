@@ -1,9 +1,10 @@
 import { VNode } from 'preact'
+import * as buttonData from './button'
 
 export type Page = {
   id: string,
   name: string | VNode
-  thumbUrl: string
+  thumb: string | VNode
   content: string | VNode
 }
 
@@ -19,18 +20,19 @@ export const pageGroups: PageGroup[] = [{
   /* * * * * * * * * * * * * * * * *
    * COMPONENTS
    * * * * * * * * * * * * * * * * */
+
   id: 'components',
   name: 'Components',
   cardsPerLine: 2,
   pages: [{
     id: 'scrllgngn',
     name: 'Scrllgngn',
-    thumbUrl: 'thumb-url.com/img.jpg',
+    thumb: 'thumb-url.com/img.jpg',
     content: <>The content of Scrllgngn.</>
   }, {
     id: 'audioquote',
     name: 'Audioquote',
-    thumbUrl: 'thumb-url.com/img.jpg',
+    thumb: 'thumb-url.com/img.jpg',
     content: <>The content of Audioquote.</>
   }]
 }, {
@@ -38,15 +40,22 @@ export const pageGroups: PageGroup[] = [{
   /* * * * * * * * * * * * * * * * *
    * UI
    * * * * * * * * * * * * * * * * */
+
   id: 'ui',
   name: 'UI',
   cardsPerLine: 3,
-  pages: []
+  pages: [{
+    id: buttonData.id,
+    name: buttonData.name,
+    thumb: buttonData.thumb,
+    content: <buttonData.content />
+  }]
 }, {
 
   /* * * * * * * * * * * * * * * * *
    * ICONS
    * * * * * * * * * * * * * * * * */
+
   id: 'icons',
   name: 'Icons',
   cardsPerLine: 3,

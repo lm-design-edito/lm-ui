@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Pixeloid-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(../fonts/pxs/400.woff),
+    url(../fonts/pxs/400.woff2);
+}
+
+@font-face {
+  font-family: "Pixeloid-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(../fonts/pxs/700.woff),
+    url(../fonts/pxs/700.woff2);
+}
+
+:root, :host {
+  --lmui-ff-pixeloid-sans: "Pixeloid-Sans", Helvetica, Arial, Roboto, sans-serif;
+}

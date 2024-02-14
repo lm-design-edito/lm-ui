@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url(../fonts/sbss/100.woff),
+    url(../fonts/sbss/100.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 100;
+  src:
+    url(../fonts/sbss/100-i.woff),
+    url(../fonts/sbss/100-i.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url(../fonts/sbss/300.woff),
+    url(../fonts/sbss/300.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+  src:
+    url(../fonts/sbss/300-i.woff),
+    url(../fonts/sbss/300-i.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(../fonts/sbss/400.woff),
+    url(../fonts/sbss/400.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 400;
+  src:
+    url(../fonts/sbss/400-i.woff),
+    url(../fonts/sbss/400-i.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url(../fonts/sbss/500.woff),
+    url(../fonts/sbss/500.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 500;
+  src:
+    url(../fonts/sbss/500-i.woff),
+    url(../fonts/sbss/500-i.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(../fonts/sbss/700.woff),
+    url(../fonts/sbss/700.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url(../fonts/sbss/700-i.woff),
+    url(../fonts/sbss/700-i.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 800;
+  src:
+    url(../fonts/sbss/800.woff),
+    url(../fonts/sbss/800.woff2);
+}
+
+@font-face {
+  font-family: "Sang-Bleu-OG-Sans";
+  font-display: swap;
+  font-style: italic;
+  font-weight: 800;
+  src:
+    url(../fonts/sbss/800-i.woff),
+    url(../fonts/sbss/800-i.woff2);
+}
+
+:root, :host {
+  --lmui-ff-sang-bleu-og-sans: "Sang-Bleu-OG-Sans", Garamond, Times, serif;
+}

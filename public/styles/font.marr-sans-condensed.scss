@@ -1,0 +1,39 @@
+/* Medium */
+@font-face {
+  font-family: "Marr-Sans-Condensed";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url(../fonts/msc/500.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/msc/500.woff2) format("woff2"),
+    url(../fonts/msc/500.woff) format("woff");
+}
+
+/* Semibold */
+@font-face {
+  font-family: "Marr-Sans-Condensed";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url(../fonts/msc/600.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/msc/600.woff2) format("woff2"),
+    url(../fonts/msc/600.woff) format("woff");
+}
+
+/* Bold */
+@font-face {
+  font-family: "Marr-Sans-Condensed";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(../fonts/msc/700.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/msc/700.woff2) format("woff2"),
+    url(../fonts/msc/700.woff) format("woff");
+}
+
+:root, :host {
+  --lmui-ff-marr-sans-condensed: "Marr-Sans-Condensed", Helvetica, Arial, Roboto, sans-serif;
+}

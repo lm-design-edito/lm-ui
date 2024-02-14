@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Sang-Bleu-OG-Condensed";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url(../fonts/sbc/100-xl.woff),
+    url(../fonts/sbc/100-xl.woff2);
+}
+
+:root, :host {
+  --lmui-ff-sang-bleu-og-condensed: "Sang-Bleu-OG-Condensed", Garamond, Times, serif;
+}

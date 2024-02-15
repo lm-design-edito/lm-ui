@@ -1,15 +1,5 @@
 import { Component } from 'preact'
 
-const lol = [{
-  name: 'size',
-  type: 'select',
-  options: [
-    { label: 'L', value: 'large' },
-    { label: 'M (défaut)', value: 'medium' },
-    { label: 'S', value: 'small' }
-  ]
-}]
-
 // Select
 
 type SelectInputProps = {
@@ -31,7 +21,6 @@ class SelectInput extends Component<SelectInputProps> {
     const { valueListener, options } = this.props
     if (valueListener === undefined) return;
     const firstValue = options.at(0)?.value
-    console.log('select - mount', firstValue)
     valueListener(firstValue)
   }
 
@@ -39,7 +28,6 @@ class SelectInput extends Component<SelectInputProps> {
     const { valueListener } = this.props
     if (valueListener === undefined) return;
     const value = (event.target as HTMLSelectElement).value
-    console.log('select - change', value)
     valueListener(value)
   }
 
@@ -74,7 +62,6 @@ class BooleanInput extends Component<BooleanInputProps> {
   componentDidMount(): void {
     const { valueListener } = this.props
     if (valueListener === undefined) return;
-    console.log('bool - mount', false)
     valueListener(false)
   }
 
@@ -82,7 +69,6 @@ class BooleanInput extends Component<BooleanInputProps> {
     const { valueListener } = this.props
     if (valueListener === undefined) return;
     const value = (event.target as HTMLInputElement).checked
-    console.log('bool - change', value)
     valueListener(value)
   }
 

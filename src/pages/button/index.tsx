@@ -10,20 +10,24 @@ type Props = {}
 type State = any
 
 export const content = class ButtonPage extends Component<Props, State> {
-  state: State = { value: {} }
+  state: State = { value: ['texte', 10, true, null, {}, []] }
   render () {
-    return <ValueEditor
+    return <div className={'une-classe'}>
+      <style>{`.une-classe, .une-classe * { font-family: monospace; }`}</style>
+      <ValueEditor
       path={['ROOT']}
       value={this.state.value}
       onChange={val => {
-        this.setState(curr => {
-          console.log(JSON.stringify(val, null, 2))
-          return {
-            ...curr,
-            value: val
-          }
-        })
+        console.log('VALUE -', val)
+        // this.setState(curr => {
+        //   console.log(JSON.stringify(val, null, 2))
+        //   return {
+        //     ...curr,
+        //     value: val
+        //   }
+        // })
       }} />
+    </div>
     // return <div>
     //   <Configurator
     //     valueListener={val => this.setState(() => val)}

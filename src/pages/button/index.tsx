@@ -1,49 +1,43 @@
-import Configurator from 'components/Configurator'
-import { ValueEditor } from 'components/JsonEditor'
+import { JsonEditor, Value as JsonValue, Scheme } from 'components/JsonEditor'
 import { Component } from 'preact'
 
 export const id = 'button'
 export const name = 'Button'
 export const thumb = <>I am thumb</>
 
+const buttonPropsScheme: Scheme.Scheme = {
+  fallback: {
+    size: 'M',
+    squared: false,
+    secondary: false
+  },
+  object: {
+    preventPropertyCreation: true,
+    properties: {
+      size: { scheme: { fallback: 'M', string: { rule: ['S', 'M', 'L'] } } },
+      squared: { scheme: { fallback: false, boolean: true } },
+      secondary: { scheme: { fallback: false, boolean: true } }
+    }
+  }
+}
+
+const buttonInitProps = buttonPropsScheme.fallback
+
 type Props = {}
-type State = any
+type State = {
+  buttonProps: JsonValue
+}
 
 export const content = class ButtonPage extends Component<Props, State> {
-  state: State = { value: ['texte', 10, true, null, {}, []] }
+  state: State = { buttonProps: buttonInitProps }
   render () {
-    return <div className={'une-classe'}>
-      <style>{`.une-classe, .une-classe * { font-family: monospace; }`}</style>
-      <ValueEditor
-      path={['ROOT']}
-      value={this.state.value}
-      onChange={val => {
-        console.log('VALUE -', val)
-        // this.setState(curr => {
-        //   console.log(JSON.stringify(val, null, 2))
-        //   return {
-        //     ...curr,
-        //     value: val
-        //   }
-        // })
-      }} />
+    return <div>
+      Button props:&nbsp;<span>
+        <JsonEditor
+          initValue={this.state.buttonProps}
+          scheme={buttonPropsScheme}
+          onChange={val => this.setState({ buttonProps: val })} />
+      </span>
     </div>
-    // return <div>
-    //   <Configurator
-    //     valueListener={val => this.setState(() => val)}
-    //     name='button-props'
-    //     options={[{
-    //       type: 'boolean',
-    //       name: 'Jean-Mich'
-    //     }, {
-    //       type: 'select',
-    //       name: 'Claude',
-    //       options: [
-    //         { label: 'L', value: 'large' },
-    //         { label: 'M', value: 'medium' },
-    //         { label: 'S', value: 'small' }
-    //       ]
-    //     }]} />
-    // </div>
   }
 }

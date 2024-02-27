@@ -5,12 +5,14 @@ export const id = 'button'
 export const name = 'Button'
 export const thumb = <>I am thumb</>
 
+const buttonInitProps = {
+  size: 'M',
+  squared: false,
+  secondary: false
+}
+
 const buttonPropsScheme: Scheme.Scheme = {
-  fallback: {
-    size: 'M',
-    squared: false,
-    secondary: false
-  },
+  fallback: buttonInitProps,
   object: {
     preventPropertyCreation: true,
     properties: {
@@ -20,8 +22,6 @@ const buttonPropsScheme: Scheme.Scheme = {
     }
   }
 }
-
-const buttonInitProps = buttonPropsScheme.fallback
 
 type Props = {}
 type State = {

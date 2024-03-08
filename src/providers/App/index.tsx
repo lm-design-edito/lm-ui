@@ -8,9 +8,6 @@ import ColorModeToggler from 'components/ColorModeToggler'
 import Home from 'consumers/Home'
 import SidePanel from 'consumers/SidePanel'
 
-// const LmPage: any = await import('https://assets-decodeurs.lemonde.fr/design-edito/v1.beta/shared/index.js?idle')
-const LmPage: any = await import('http://localhost:3000/shared/index.js?idle')
-
 const defaultScrollBarWidth = getBrowserDefaultScrollbarWidth()
 
 type Props = {}
@@ -56,8 +53,7 @@ export default class App extends Component<Props, State> {
       ...defaultContext,
       togglePage: this.togglePage,
       toggleDarkmode: this.toggleDarkmode,
-      currentPage,
-      LmPage
+      currentPage
     }
 
     const wrapperClasses = [styles['wrapper']]

@@ -9,17 +9,15 @@ type AppContextType = {
   getPageGroup: typeof getPageGroup
   getPage: typeof getPage
   currentPage: Page | null
-  LmPage: any
 }
 
-export const defaultContext = {
+export const defaultContext: AppContextType = {
   togglePage: () => {},
   toggleDarkMode: () => {},
   pageGroups,
   getPageGroup,
   getPage,
-  currentPage: null,
-  LmPage: {}
+  currentPage: null
 }
 
 const AppContext = createContext<AppContextType>(defaultContext)

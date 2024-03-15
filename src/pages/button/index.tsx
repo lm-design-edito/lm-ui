@@ -2,6 +2,7 @@ import { JsonEditor, Value as JsonValue, Scheme } from 'components/JsonEditor'
 import { Component, ContextType } from 'preact'
 import AppContext from 'providers/context'
 
+
 export const id = 'button'
 export const name = 'Button'
 export const thumb = <>I am thumb</>
@@ -30,9 +31,9 @@ type State = {
 }
 
 export const content = class ButtonPage extends Component<Props, State> {
-  static contextType = AppContext
-  // context!: ContextType<typeof AppContext>
-  state: State = { buttonProps: buttonInitProps }
+  state: State = {
+    buttonProps: buttonInitProps
+  }
 
   componentDidMount(): void {
     console.log(this)

@@ -173,7 +173,7 @@ export class Json {
  *
  * * * * * * * * * * * * * * * * * * * * * * */
 
-export type ValidationSuccessResult<T extends Value> = { success: true, validated: T, input: T | undefined, }
+export type ValidationSuccessResult<T extends Value> = { success: true, validated: T, input: T | undefined }
 export type ValidationFailureResult<T extends Value> = { success: false, validated: T, input: T | undefined, reason: string }
 export type ValidationResult<T extends Value> = ValidationSuccessResult<T> | ValidationFailureResult<T>
 

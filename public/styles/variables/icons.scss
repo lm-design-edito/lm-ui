@@ -1,0 +1,31 @@
+:root,
+:host {
+  --lmui-ic-default-light: brightness(0%); /* [WIP] -ic ?*/
+  --lmui-ic-default-dark: brightness(0%) grayscale(100%) invert(1);
+  --lmui-ic-red-light: hue-rotate(180deg) brightness(110%) saturate(180%) contrast(160%);
+  --lmui-ic-red-dark: hue-rotate(180deg) brightness(110%) saturate(180%) contrast(160%) grayscale(20%);
+  --lmui-ic-green-light: hue-rotate(-80deg) brightness(130%);
+  --lmui-ic-green-dark: hue-rotate(-80deg) brightness(130%);
+  --lmui-ic-white-light: brightness(10%) invert(1);
+  --lmui-ic-white-dark: brightness(10%) invert(1);
+
+  --lmui-ic-small: scale(0.8);
+}
+
+:root,
+:host,
+[data-color-mode="light"] {
+  --lmui-ic-default: var(--lmui-ic-default-light); /* Black in lightmode, white in darkmode */
+  --lmui-ic-red: var(--lmui-ic-red-light); /* Red */
+  --lmui-ic-green: var(--lmui-ic-green-light); /* Green */
+  --lmui-ic-white: var(--lmui-ic-white-light); /* White in lightmode, white in darkmode */
+  --lmui-ic-black: var(--lmui-ic-default-light); /* Black in lightmode, black in darkmode */
+}
+
+[data-color-mode="dark"] {
+  --lmui-ic-default: var(--lmui-ic-default-dark); /* White in darkmode, black in lightmode */
+  --lmui-ic-red: var(--lmui-ic-red-dark); /* Red */
+  --lmui-ic-green: var(--lmui-ic-green-dark); /* Green */
+  --lmui-ic-white: var(--lmui-ic-white-dark); /* White in darkmode, white in lightmode */
+  --lmui-ic-black: var(--lmui-ic-default-light); /* Black in darkmode, black in lightmode */
+}

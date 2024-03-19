@@ -1,0 +1,227 @@
+:root, :host {
+  --lm-texts-large-scale-level-0: 24px;
+  --lm-texts-large-scale-level-1: 31.59px;
+  --lm-texts-large-scale-level-2: 41.57px;
+  --lm-texts-large-scale-level-3: 54.71px;
+  --lm-texts-large-scale-level-4: 72px;
+}
+
+@media (min-width:480px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 25.43px;
+    --lm-texts-large-scale-level-1: 33.28px;
+    --lm-texts-large-scale-level-2: 43.55px;
+    --lm-texts-large-scale-level-3: 56.98px;
+    --lm-texts-large-scale-level-4: 74.57px;
+  }
+}
+
+@media (min-width:640px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 26.86px;
+    --lm-texts-large-scale-level-1: 34.96px;
+    --lm-texts-large-scale-level-2: 45.52px;
+    --lm-texts-large-scale-level-3: 59.26px;
+    --lm-texts-large-scale-level-4: 77.14px;
+  }
+}
+
+@media (min-width:800px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 28.29px;
+    --lm-texts-large-scale-level-1: 36.65px;
+    --lm-texts-large-scale-level-2: 47.48px;
+    --lm-texts-large-scale-level-3: 61.52px;
+    --lm-texts-large-scale-level-4: 79.71px;
+  }
+}
+
+@media (min-width:960px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 29.71px;
+    --lm-texts-large-scale-level-1: 38.33px;
+    --lm-texts-large-scale-level-2: 49.45px;
+    --lm-texts-large-scale-level-3: 63.79px;
+    --lm-texts-large-scale-level-4: 82.29px;
+  }
+}
+
+@media (min-width:1120px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 31.14px;
+    --lm-texts-large-scale-level-1: 40.01px;
+    --lm-texts-large-scale-level-2: 51.41px;
+    --lm-texts-large-scale-level-3: 66.05px;
+    --lm-texts-large-scale-level-4: 84.86px;
+  }
+}
+
+@media (min-width:1280px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 32.57px;
+    --lm-texts-large-scale-level-1: 41.69px;
+    --lm-texts-large-scale-level-2: 53.36px;
+    --lm-texts-large-scale-level-3: 68.3px;
+    --lm-texts-large-scale-level-4: 87.43px;
+  }
+}
+
+@media (min-width:1440px) {
+  :root, :host {
+    --lm-texts-large-scale-level-0: 34px;
+    --lm-texts-large-scale-level-1: 43.37px;
+    --lm-texts-large-scale-level-2: 55.32px;
+    --lm-texts-large-scale-level-3: 70.56px;
+    --lm-texts-large-scale-level-4: 90px;
+  }
+}
+
+:root, :host {
+  --lm-texts-scale-level-0: 13px;
+  --lm-texts-scale-level-1: 13.61px;
+  --lm-texts-scale-level-2: 14.24px;
+  --lm-texts-scale-level-3: 14.91px;
+  --lm-texts-scale-level-4: 15.6px;
+  --lm-texts-scale-level-5: 16.33px;
+  --lm-texts-scale-level-6: 17.09px;
+  --lm-texts-scale-level-7: 17.89px;
+  --lm-texts-scale-level-8: 18.73px;
+  --lm-texts-scale-level-9: 19.6px;
+  --lm-texts-scale-level-10: 20.52px;
+  --lm-texts-scale-level-11: 21.48px;
+  --lm-texts-scale-level-12: 22.48px;
+  --lm-texts-scale-level-13: 23.53px;
+  --lm-texts-scale-level-14: 24.63px;
+  --lm-texts-scale-level-15: 25.78px;
+  --lm-texts-scale-level-16: 26.98px;
+  --lm-texts-scale-level-17: 28.24px;
+  --lm-texts-scale-level-18: 29.56px;
+  --lm-texts-scale-level-19: 30.94px;
+  --lm-texts-scale-level-20: 32.39px;
+  --lm-texts-scale-level-21: 33.9px;
+  --lm-texts-scale-level-22: 35.48px;
+  --lm-texts-scale-level-23: 37.14px;
+  --lm-texts-scale-level-24: 38.87px;
+  --lm-texts-scale-level-25: 40.69px;
+  --lm-texts-scale-level-26: 42.59px;
+  --lm-texts-scale-level-27: 44.57px;
+  --lm-texts-scale-level-28: 46.66px;
+  --lm-texts-scale-level-29: 48.83px;
+  --lm-texts-scale-level-30: 51.11px;
+  --lm-texts-scale-level-31: 53.5px;
+  --lm-texts-scale-level-32: 56px;
+}
+
+@media (min-width:693px) {
+  :root, :host {
+    --lm-texts-scale-level-0: 13.33px;
+    --lm-texts-scale-level-1: 13.98px;
+    --lm-texts-scale-level-2: 14.67px;
+    --lm-texts-scale-level-3: 15.38px;
+    --lm-texts-scale-level-4: 16.14px;
+    --lm-texts-scale-level-5: 16.92px;
+    --lm-texts-scale-level-6: 17.75px;
+    --lm-texts-scale-level-7: 18.62px;
+    --lm-texts-scale-level-8: 19.53px;
+    --lm-texts-scale-level-9: 20.48px;
+    --lm-texts-scale-level-10: 21.48px;
+    --lm-texts-scale-level-11: 22.53px;
+    --lm-texts-scale-level-12: 23.63px;
+    --lm-texts-scale-level-13: 24.78px;
+    --lm-texts-scale-level-14: 25.99px;
+    --lm-texts-scale-level-15: 27.26px;
+    --lm-texts-scale-level-16: 28.6px;
+    --lm-texts-scale-level-17: 29.99px;
+    --lm-texts-scale-level-18: 31.46px;
+    --lm-texts-scale-level-19: 32.99px;
+    --lm-texts-scale-level-20: 34.6px;
+    --lm-texts-scale-level-21: 36.3px;
+    --lm-texts-scale-level-22: 38.07px;
+    --lm-texts-scale-level-23: 39.93px;
+    --lm-texts-scale-level-24: 41.88px;
+    --lm-texts-scale-level-25: 43.92px;
+    --lm-texts-scale-level-26: 46.07px;
+    --lm-texts-scale-level-27: 48.32px;
+    --lm-texts-scale-level-28: 50.68px;
+    --lm-texts-scale-level-29: 53.15px;
+    --lm-texts-scale-level-30: 55.75px;
+    --lm-texts-scale-level-31: 58.47px;
+    --lm-texts-scale-level-32: 61.33px;
+  }
+}
+
+@media (min-width:1067px) {
+  :root, :host {
+    --lm-texts-scale-level-0: 13.67px;
+    --lm-texts-scale-level-1: 14.36px;
+    --lm-texts-scale-level-2: 15.09px;
+    --lm-texts-scale-level-3: 15.86px;
+    --lm-texts-scale-level-4: 16.66px;
+    --lm-texts-scale-level-5: 17.51px;
+    --lm-texts-scale-level-6: 18.4px;
+    --lm-texts-scale-level-7: 19.33px;
+    --lm-texts-scale-level-8: 20.31px;
+    --lm-texts-scale-level-9: 21.34px;
+    --lm-texts-scale-level-10: 22.43px;
+    --lm-texts-scale-level-11: 23.56px;
+    --lm-texts-scale-level-12: 24.76px;
+    --lm-texts-scale-level-13: 26.02px;
+    --lm-texts-scale-level-14: 27.34px;
+    --lm-texts-scale-level-15: 28.73px;
+    --lm-texts-scale-level-16: 30.19px;
+    --lm-texts-scale-level-17: 31.72px;
+    --lm-texts-scale-level-18: 33.33px;
+    --lm-texts-scale-level-19: 35.02px;
+    --lm-texts-scale-level-20: 36.8px;
+    --lm-texts-scale-level-21: 38.67px;
+    --lm-texts-scale-level-22: 40.63px;
+    --lm-texts-scale-level-23: 42.69px;
+    --lm-texts-scale-level-24: 44.86px;
+    --lm-texts-scale-level-25: 47.14px;
+    --lm-texts-scale-level-26: 49.53px;
+    --lm-texts-scale-level-27: 52.05px;
+    --lm-texts-scale-level-28: 54.69px;
+    --lm-texts-scale-level-29: 57.47px;
+    --lm-texts-scale-level-30: 60.38px;
+    --lm-texts-scale-level-31: 63.45px;
+    --lm-texts-scale-level-32: 66.67px;
+  }
+}
+
+@media (min-width:1440px) {
+  :root, :host {
+    --lm-texts-scale-level-0: 14px;
+    --lm-texts-scale-level-1: 14.74px;
+    --lm-texts-scale-level-2: 15.51px;
+    --lm-texts-scale-level-3: 16.32px;
+    --lm-texts-scale-level-4: 17.18px;
+    --lm-texts-scale-level-5: 18.08px;
+    --lm-texts-scale-level-6: 19.03px;
+    --lm-texts-scale-level-7: 20.03px;
+    --lm-texts-scale-level-8: 21.08px;
+    --lm-texts-scale-level-9: 22.19px;
+    --lm-texts-scale-level-10: 23.35px;
+    --lm-texts-scale-level-11: 24.58px;
+    --lm-texts-scale-level-12: 25.87px;
+    --lm-texts-scale-level-13: 27.23px;
+    --lm-texts-scale-level-14: 28.66px;
+    --lm-texts-scale-level-15: 30.17px;
+    --lm-texts-scale-level-16: 31.75px;
+    --lm-texts-scale-level-17: 33.42px;
+    --lm-texts-scale-level-18: 35.17px;
+    --lm-texts-scale-level-19: 37.02px;
+    --lm-texts-scale-level-20: 38.96px;
+    --lm-texts-scale-level-21: 41.01px;
+    --lm-texts-scale-level-22: 43.16px;
+    --lm-texts-scale-level-23: 45.43px;
+    --lm-texts-scale-level-24: 47.81px;
+    --lm-texts-scale-level-25: 50.32px;
+    --lm-texts-scale-level-26: 52.96px;
+    --lm-texts-scale-level-27: 55.75px;
+    --lm-texts-scale-level-28: 58.67px;
+    --lm-texts-scale-level-29: 61.75px;
+    --lm-texts-scale-level-30: 65px;
+    --lm-texts-scale-level-31: 68.41px;
+    --lm-texts-scale-level-32: 72px;
+  }
+}

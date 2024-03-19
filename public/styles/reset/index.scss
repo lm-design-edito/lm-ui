@@ -1,0 +1,14 @@
+/* Darkdouille */
+
+.dkdll { display: none; }
+
+/* Slots */
+
+:where(.lm-slot-inner *) {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.lm-slot-inner[data-color-mode="dark"] {
+  color-scheme: dark;
+}

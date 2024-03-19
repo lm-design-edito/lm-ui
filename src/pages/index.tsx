@@ -48,7 +48,7 @@ export const pageGroups: PageGroup[] = [{
     id: buttonData.id,
     name: buttonData.name,
     thumb: buttonData.thumb,
-    content: <buttonData.content />
+    content: <buttonData.Content />
   }]
 }, {
 

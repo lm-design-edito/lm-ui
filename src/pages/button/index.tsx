@@ -1,57 +1,54 @@
 import { JsonEditor, Value as JsonValue, Scheme } from 'components/JsonEditor'
-import { Component, ContextType } from 'preact'
-import AppContext from 'providers/context'
+import { Component } from 'preact'
 
+import Button, { Props as ButtonProps } from '@design-edito/new-app/components/UI/components/Button'
 
 export const id = 'button'
 export const name = 'Button'
 export const thumb = <>I am thumb</>
 
 const buttonInitProps = {
-  size: 'M',
+  content: 'En savoir plus',
+  size: 'medium',
+  disabled: false,
   squared: false,
-  secondary: false
-}
+  secondary: false,
+  iconFirst: false
+} as ButtonProps
 
 const buttonPropsScheme: Scheme.Scheme = {
-  fallback: buttonInitProps,
+  fallback: buttonInitProps as JsonValue,
   object: {
     preventPropertyCreation: true,
     properties: {
-      size: { scheme: { fallback: 'M', string: { rule: ['S', 'M', 'L'] } } },
+      customClass: { scheme: { fallback: 'my-custom-class', string: true }, optional: true },
+      content: { scheme: { fallback: 'En savoir plus', string: true }, optional: true },
+      size: { scheme: { fallback: 'medium', string: { rule: ['small', 'medium', 'large'] } } },
+      disabled: { scheme: { fallback: false, boolean: true } },
       squared: { scheme: { fallback: false, boolean: true } },
-      secondary: { scheme: { fallback: false, boolean: true } }
+      secondary: { scheme: { fallback: false, boolean: true } },
+      iconContent: { scheme: { fallback: '', string: true }, optional: true },
+      iconFirst: { scheme: { fallback: false, boolean: true } }
     }
   }
 }
 
 type Props = {}
 type State = {
-  buttonProps: JsonValue
+  buttonProps: ButtonProps
 }
 
-export const content = class ButtonPage extends Component<Props, State> {
-  state: State = {
-    buttonProps: buttonInitProps
-  }
-
-  componentDidMount(): void {
-    console.log(this)
-  }
+export const Content = class ButtonPage extends Component<Props, State> {
+  state: State = { buttonProps: buttonInitProps }
 
   render () {
-    return <AppContext.Consumer>
-      {context => {
-        // console.log(context)
-        return <div>
-          Button props:&nbsp;<span>
-            <JsonEditor
-              initValue={this.state.buttonProps}
-              scheme={buttonPropsScheme}
-              onChange={val => this.setState({ buttonProps: val })} />
-          </span>
-        </div>}
-      }
-    </AppContext.Consumer>
+    const { state } = this
+    return <div>
+      <JsonEditor
+        initValue={this.state.buttonProps as JsonValue}
+        scheme={buttonPropsScheme}
+        onChange={val => this.setState({ buttonProps: val as ButtonProps })} />
+      <Button {...state.buttonProps} />
+    </div>
   }
 }

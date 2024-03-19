@@ -1,0 +1,35 @@
+:root,
+:host {
+  /* Border-radius */
+  --lmui-len-rounded-search-radius: 60px; /* [WIP] -c ? -len plutôt */
+  --lmui-len-rounded-search-half-radius: calc(var(--lmui-len-rounded-search-radius) / 2); /* [WIP] */
+
+  /* Tabs size */
+  --lmui-len-tab-width-large: 40px; /* [WIP] ça sert ailleurs que dans les tabs ça ? */
+  --lmui-len-tab-padding-large: 8px; /* [WIP] ça sert ailleurs que dans les tabs ça ? */
+
+  /* Search-engine autocomplete */
+  --lmui-len-search-autocomplete-height: 48px; /* [WIP] */
+
+  /* Search icon size */
+  --lmui-len-search-button-height: 28px; /* [WIP] __ dans les noms de variable ? */
+
+  --lmui-len-search-button-scale: scale(0.95);
+}
+
+/* Re-définition des variables fonction du contexte */
+/* [WIP] Soit ce morceau là doit aller à proximité du css spécifique du composant, soit on crée une variable spécifique au search */
+.lmui-search_s {
+  --lmui-len-search-autocomplete-height: 36px;
+}
+
+/* Re-définition des variables fonction du viewport */
+@media (max-width: 600px) {
+  :root,
+  :host {
+    --lmui-len-search-autocomplete-height: 36px;
+    --lmui-len-tab-width-large: 32px;
+    --lmui-len-tab-padding-large: 4px;
+    --lmui-len-search-button-scale: scale(0.7);
+  }
+}

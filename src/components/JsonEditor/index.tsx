@@ -956,7 +956,7 @@ export class ArrayValueEditor extends Component<ArrayValueEditorProps> {
   }
 }
 
-// Array Value Editor
+// Object Value Editor
 
 type ObjectValueEditorProps = {
   value: ObjectValue
@@ -1099,7 +1099,6 @@ export class ObjectValueEditor extends Component<ObjectValueEditorProps> {
           <button 
             className={`${wrapperMainClass}__create-optional-property`}
             data-value={key}
-            disabled={preventPropertyCreation === true}
             onClick={() => handlePropertyCreation(key)}>
             Create optional key: {key}
           </button>

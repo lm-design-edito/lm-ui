@@ -58,23 +58,33 @@ export default class App extends Component<Props, State> {
 
     const wrapperClasses = [styles['wrapper']]
     if (currentPage !== null) wrapperClasses.push(styles['wrapper_panel-open'])
-    const wrapperStyle = { '--scrollbar-width': `${defaultScrollBarWidth}px` }
+    const wrapperStyle = {
+      '--scrollbar-width': `${defaultScrollBarWidth}px`
+    }
     
     return <AppContext.Provider value={globalContext}>
       <div
+        data-color-mode={state.isDarkmode ? 'dark' : 'light'}
         className={wrapperClasses.join(' ')}
         style={wrapperStyle}>
+        {/* Header */}
         <div className={styles['header-slot']}>
           <Header />
         </div>
+        
+        {/* Color mode */}
         <div className={styles['color-mode-toggler-slot']}>
-          <ColorModeToggler
+          <ColorModeToggler 
             toggled={state.isDarkmode}
             onToggle={this.toggleDarkmode} />
         </div>
+        
+        {/* Home */}
         <div className={styles['home-slot']}>
           <Home />
         </div>
+        
+        {/* Side panel */}
         <div
           className={styles['opacifier']}
           onClick={() => this.togglePage(null)} />

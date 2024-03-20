@@ -1,0 +1,117 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-checkbox-border: var(--lmui-c-smoke-dark);
+  --lmui-c-main-checkbox-bg: var(--lmui-c-slate-darker);
+  --lmui-c-main-checkbox-tick-fill: var(--lmui-c-white);
+  --lmui-c-main-checkbox-bg-hover: var(--lmui-c-snow-dark);
+  --lmui-c-main-checkbox-bg-disabled: var(--lmui-c-snow-darker);
+  --lmui-c-main-checkbox-border-disabled: var(--lmui-c-smoke-medium);
+  --lmui-c-main-checkbox-border-error: var(--lmui-c-red-medium);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-checkbox-border: var(--lmui-c-smoke-medium);
+  --lmui-c-main-checkbox-bg: var(--lmui-c-slate-darker);
+  --lmui-c-main-checkbox-tick-fill: var(--lmui-c-white);
+  --lmui-c-main-checkbox-bg-hover: var(--lmui-c-slate-medium);
+  --lmui-c-main-checkbox-bg-disabled: var(--lmui-c-slate-medium);
+  --lmui-c-main-checkbox-border-disabled: var(--lmui-c-smoke-medium);
+  --lmui-c-main-checkbox-border-error: var(--lmui-c-red-light);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-checkbox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.lmui-checkbox__input {
+  display: none;
+}
+
+.lmui-checkbox__input+.lmui-checkbox__fake {
+  position: relative;
+  padding-left: 30px;
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--lmui-c-main-toggle-label);
+  cursor: pointer;
+}
+
+.lmui-checkbox__input + .lmui-checkbox__fake::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: 1px solid var(--lmui-c-main-checkbox-border);
+  background: transparent;
+  transition: background-color 0.25s ease-in;
+}
+
+/* Hover State */
+
+.lmui-checkbox__input + .lmui-checkbox__fake:hover::before {
+  background: var(--lmui-c-main-checkbox-bg-hover);
+}
+
+/* Disabled State */
+
+.lmui-checkbox__input:disabled + .lmui-checkbox__fake::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: 1px solid var(--lmui-c-main-checkbox-border-disabled);
+  background: var(--lmui-c-main-checkbox-bg-disabled);
+  pointer-events: none;
+}
+
+/* Checked State */
+
+.lmui-checkbox__input:checked + .lmui-checkbox__fake::before {
+  background: var(--lmui-c-main-checkbox-bg);
+  transition: background-color 0.25s ease-in;
+}
+
+.lmui-checkbox__input:checked + .lmui-checkbox__fake::after {
+  content: "";
+  position: absolute;
+  background-color: var(--lmui-c-main-checkbox-tick-fill);
+  -webkit-mask-image: url("https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/tick.svg");
+  mask-image: url("https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/tick.svg");
+  left: 2px;
+  top: 4px;
+  width: 15px;
+  height: 12px;
+}
+
+/* Error State */
+
+.lmui-checkbox.lmui-checkbox_error .lmui-checkbox__input + .lmui-checkbox__fake::before {
+  border: 1px solid var(--lmui-c-main-checkbox-border-error);
+}
+
+.lmui-checkbox.lmui-checkbox_error .lmui-checkbox__input:checked + .lmui-checkbox__fake::before {
+  border: 1px solid var(--lmui-c-main-checkbox-border);
+}

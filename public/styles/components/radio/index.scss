@@ -1,0 +1,116 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-radio-border: var(--lmui-c-smoke-dark);
+  --lmui-c-main-radio-bg-hover: var(--lmui-c-snow-dark);
+  --lmui-c-main-radio-bullet-fill: var(--lmui-c-slate-darker);
+  --lmui-c-main-radio-border-enabled: var(--lmui-c-slate-darker);
+  --lmui-c-main-radio-bg-disabled: var(--lmui-c-snow-darker);
+  --lmui-c-main-radio-border-disabled: var(--lmui-c-smoke-medium);
+  --lmui-c-main-radio-border-error: var(--lmui-c-red-medium);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-radio-border: var(--lmui-c-smoke-medium);
+  --lmui-c-main-radio-bg-hover: var(--lmui-c-slate-medium);
+  --lmui-c-main-radio-bullet-fill: var(--lmui-c-white);
+  --lmui-c-main-radio-border-enabled: var(--lmui-c-white);
+  --lmui-c-main-radio-bg-disabled: var(--lmui-c-slate-medium);
+  --lmui-c-main-radio-border-disabled: var(--lmui-c-smoke-medium);
+  --lmui-c-main-radio-border-error: var(--lmui-c-red-light);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-radio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.lmui-radio__input {
+  display: none;
+}
+
+.lmui-radio__input + .lmui-radio__fake {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--lmui-c-main-toggle-label);
+}
+
+.lmui-radio__input + .lmui-radio__fake::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--lmui-c-main-radio-border);
+  background: transparent;
+  transition: background-color 0.25s ease-in;
+}
+
+/* Hover State */
+
+.lmui-radio__input + .lmui-radio__fake:hover::before {
+  background: var(--lmui-c-main-radio-bg-hover);
+}
+
+/* Disabled State */
+
+.lmui-radio__input:disabled + .lmui-radio__fake::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--lmui-c-main-radio-border-disabled);
+  background: var(--lmui-c-main-radio-bg-disabled);
+  pointer-events: none;
+}
+
+/* Checked State */
+
+.lmui-radio__input:checked + .lmui-radio__fake::before {
+  transition: background-color 0.25s ease-in, border 0.25s ease-in;
+  border: 1px solid var(--lmui-c-main-radio-border-enabled);
+}
+
+.lmui-radio__input:checked + .lmui-radio__fake::after {
+  content: "";
+  position: absolute;
+  background-color: var(--lmui-c-main-radio-bullet-fill);
+  border-radius: 50%;
+  left: 6px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+}
+
+/* Error State */
+
+.lmui-radio.lmui-radio_error .lmui-radio__input + .lmui-radio__fake::before {
+  border: 1px solid var(--lmui-c-main-radio-border-error);
+}
+
+.lmui-radio.lmui-radio_error .lmui-radio__input:checked + .lmui-radio__fake::before {
+  border: 1px solid var(--lmui-c-main-radio-border);
+}

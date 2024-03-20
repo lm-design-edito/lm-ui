@@ -1,0 +1,224 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-article-carousel-title: var(--lmui-c-slate-darker);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-article-carousel-title: var(--lmui-c-smoke-lighter);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-article-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--lmui-c-block-border);
+  border-radius: 5px;
+
+  @include mixins.max-width('small') {
+    gap: 12px;
+  }
+}
+
+/* Heading */
+
+.lmui-article-carousel__heading {
+  box-sizing: border-box;
+  height: 62px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--lmui-c-block-border);
+
+  @include mixins.max-width('small') {
+    padding: 0 12px;
+    height: 48px;
+  }
+}
+
+// [WIP] h2 ?
+.lmui-article-carousel__heading h2 {
+  margin: 0;
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--lmui-c-article-carousel-title);
+  
+  @include mixins.max-width('small') {
+    font-size: 13px;
+  }
+}
+
+.lmui-article-carousel__heading-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+// [WIP] du coup la structure impose un bouton secondaire ? Il y a peut-être plus simple à trouver
+.lmui-article-carousel__heading-controls-arrow-prev.lmui-button.lmui-button_with-icon.lmui-button_secondary,
+.lmui-article-carousel__heading-controls-arrow-next.lmui-button.lmui-button_with-icon.lmui-button_secondary {
+  border: 1px solid var(--lmui-c-block-border);
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  padding: unset;
+}
+
+.lmui-article-carousel__heading-controls-arrow-prev.lmui-button.lmui-button_with-icon.lmui-button_secondary img,
+.lmui-article-carousel__heading-controls-arrow-next.lmui-button.lmui-button_with-icon.lmui-button_secondary img {
+  transform: scale(0.85) translateX(1px);
+
+  @include mixins.max-width('small') {
+    transform: scale(0.65) translateX(1px);
+  }
+}
+
+/* Row */
+
+.lmui-article-carousel__row {
+  padding: 0 0 20px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  overflow: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  @include mixins.max-width('small') {
+    transform: scale(0.65) translateX(1px);
+  }
+}
+
+// [WIP] __row et pas __row-slot ?
+.lmui-article-carousel__row img {
+  object-fit: cover;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Row slot */
+
+.lmui-article-carousel__row-slot {
+  display: flex;
+  flex-direction: row;
+  max-width: 60%;
+  gap: 24px;
+  flex-shrink: 0;
+
+  @include mixins.max-width('medium') {
+    max-width: 80%;
+  }
+
+  @include mixins.max-width('small') {
+    gap: 12px;
+  }
+}
+
+.lmui-article-carousel__row-slot::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: var(--lmui-c-block-border);
+}
+
+.lmui-article-carousel__row-slot:last-child {
+  padding: 0 24px 0 0;
+}
+
+.lmui-article-carousel__row-slot:last-child::after {
+  display: none;
+}
+
+// [WIP] à la fois __row-slot et __row-slot-teasing ?
+.lmui-article-carousel__row-slot.lmui-article-carousel__row-slot-teasing .lmui-article-carousel__row-slot-image::after {
+  content: "";
+  position: absolute;
+  border-radius: 3px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lmui-article-carousel__row-slot.lmui-article-carousel__row-slot-teasing .lmui-article-carousel__row-slot-text .lmui-article-carousel__row-slot-text-title {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Row slot image */
+
+.lmui-article-carousel__row-slot-image {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 100px;
+  width: 150px;
+  vertical-align: top;
+
+  @include mixins.max-width('small') {
+    height: 60px;
+    width: 80px;
+  }
+}
+
+/* Row slot text */
+
+.lmui-article-carousel__row-slot-text {
+  display: flex;
+  flex-direction: column;
+  color: var(--lmui-c-article-carousel-title);
+  gap: 8px;
+
+  @include mixins.max-width('small') {
+    gap: 4px;
+  }
+}
+
+/* Row slot text title */
+
+.lmui-article-carousel__row-slot-text-title {
+  font-family: var(--lmui-ff-marr-sans-condensed);
+  font-size: 18px;
+  line-height: 1.1;
+
+  @include mixins.max-width('small') {
+    font-size: 15px;
+  }
+}
+
+.lmui-article-carousel__row-slot-text p {
+  margin: unset;
+}
+
+/* Row slot date */
+
+.lmui-article-carousel__row-slot-text-date {
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  @include mixins.max-width('small') {
+    font-size: 9px;
+  }
+}

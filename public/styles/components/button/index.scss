@@ -1,0 +1,220 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-button-label: var(--lmui-c-white);
+  --lmui-c-main-button-bg: var(--lmui-c-sea-medium);
+  --lmui-c-main-button-bg-hover: var(--lmui-c-sea-dark);
+  --lmui-c-main-button-bg-active: var(--lmui-c-sea-darker);
+  --lmui-c-main-button-label-disabled: var(--lmui-c-smoke-light);
+  --lmui-c-main-button-bg-disabled: var(--lmui-c-snow-light);
+  --lmui-c-secondary-button-border: var(--lmui-c-slate-darker);
+  --lmui-c-secondary-button-label: var(--lmui-c-slate-darker);
+  --lmui-c-secondary-button-bg-hover: var(--lmui-c-snow-medium);
+  --lmui-c-secondary-button-bg-active: var(--lmui-c-smoke-lighter);
+  --lmui-c-secondary-button-label-disabled: var(--lmui-c-smoke-lighter);
+  --lmui-c-secondary-button-border-disabled: var(--lmui-c-snow-darker);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-button-label: var(--lmui-c-snow-lighter);
+  --lmui-c-main-button-bg: var(--lmui-c-sea-medium);
+  --lmui-c-main-button-bg-hover: var(--lmui-c-sea-dark);
+  --lmui-c-main-button-bg-active: var(--lmui-c-sea-darker);
+  --lmui-c-main-button-label-disabled: var(--lmui-c-smoke-medium);
+  --lmui-c-main-button-bg-disabled: var(--lmui-c-slate-dark);
+  --lmui-c-secondary-button-border: var(--lmui-c-smoke-darker);
+  --lmui-c-secondary-button-label: var(--lmui-c-snow-darker);
+  --lmui-c-secondary-button-bg-hover: var(--lmui-c-slate-dark);
+  --lmui-c-secondary-button-bg-active: var(--lmui-c-slate-medium);
+  --lmui-c-secondary-button-label-disabled: var(--lmui-c-smoke-dark);
+  --lmui-c-secondary-button-border-disabled: var(--lmui-c-smoke-darker);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-button {
+  border: none;
+  border-radius: 40px;
+  height: 42px;
+  width: fit-content;
+  padding: 0 20px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--lmui-c-main-button-bg);
+  transition: 0.45s var(--lmui-tfunc-ease-out-quint);
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--lmui-c-white);
+  cursor: pointer;
+
+  @include mixins.max-width('medium') {
+    height: 32px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  @include mixins.max-width('small') {
+    height: 26px;
+    padding: 0px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Size modifiers */
+
+.lmui-button.lmui-button_m {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 14px;
+
+  @include mixins.max-width('small') {
+    height: 26px;
+    padding: 0px 12px;
+    font-size: 13px;
+  }
+}
+
+.lmui-button.lmui-button_s {
+  height: 26px;
+  padding: 0px 12px;
+  font-size: 13px;
+}
+
+/* Content modifiers */
+
+.lmui-button.lmui-button_with-icon {
+  padding: 0 14px 0 20px;
+
+  @include mixins.max-width('medium') {
+    gap: 6px;
+    padding: 0 10px 0 12px;
+  }
+}
+
+.lmui-button.lmui-button_s.lmui-button_with-icon,
+.lmui-button.lmui-button_m.lmui-button_with-icon {
+  gap: 6px;
+  padding: 0 10px 0 12px;
+}
+
+/* [WIP] not sure about those icons stuff */
+
+.lmui-button.lmui-button_with-icon .lmui-button__icon .lmui-icon {
+  filter: var(--lmui-ic-white);
+}
+
+.lmui-button:disabled.lmui-button_with-icon .lmui-button__icon .lmui-icon {
+  filter: var(--lmui-ic-default);
+  opacity: var(--lmui-o-quaternary);
+}
+
+.lmui-button.lmui-button_with-icon.lmui-button_secondary .lmui-button__icon .lmui-icon {
+  filter: var(--lmui-ic-default);
+}
+
+.lmui-button:disabled.lmui-button_with-icon.lmui-button_secondary .lmui-button__icon .lmui-icon {
+  filter: var(--lmui-ic-default);
+  opacity: var(--lmui-o-quaternary);
+}
+
+/* Content alignment modifier */
+
+.lmui-button.lmui-row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Button's icon */
+
+.lmui-button .lmui-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+}
+
+.lmui-button.lmui-button_m .lmui-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+}
+
+.lmui-button.lmui-button_s .lmui-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+}
+
+.lmui-button .lmui-button__icon img {
+  @include mixins.max-width('medium') {
+    transform: var(--lmui-ic-small);
+  }
+}
+
+.lmui-button.lmui-button_s .lmui-button__icon img,
+.lmui-button.lmui-button_m .lmui-button__icon img {
+  transform: var(--lmui-ic-small);
+}
+
+/* Squared button */
+
+.lmui-button.lmui-button_squared {
+  border-radius: 3px;
+}
+
+.lmui-button:hover {
+  background-color: var(--lmui-c-main-button-bg-hover);
+  box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lmui-button:active {
+  background-color: var(--lmui-c-main-button-bg-active);
+  transition: 0.12s ease-in;
+}
+
+.lmui-button:disabled {
+  color: var(--lmui-c-main-button-label-disabled);
+  background-color: var(--lmui-c-main-button-bg-disabled);
+  pointer-events: none;
+}
+
+/* Secondary-button */
+
+.lmui-button.lmui-button_secondary {
+  background-color: unset;
+  color: var(--lmui-c-secondary-button-label);
+  border: 1px solid var(--lmui-c-secondary-button-border);
+}
+
+.lmui-button.lmui-button_secondary:hover {
+  background-color: var(--lmui-c-secondary-button-bg-hover);
+  color: var(--lmui-c-secondary-button-label);
+  box-shadow: unset;
+}
+
+.lmui-button.lmui-button_secondary:active {
+  background-color: var(--lmui-c-secondary-button-bg-active);
+}
+
+.lmui-button.lmui-button_secondary:disabled {
+  color: var(--lmui-c-secondary-button-label-disabled);
+  border: 1px solid var(--lmui-c-secondary-button-border-disabled);
+  pointer-events: none;
+}

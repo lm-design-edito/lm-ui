@@ -1,0 +1,33 @@
+.lmui-icon {
+  filter: var(--lmui-ic-default);
+  opacity: var(--lmui-o-primary);
+}
+
+/* Opacity range */
+
+.lmui-icon.lmui-icon_secondary {
+  opacity: var(--lmui-o-secondary);
+}
+
+.lmui-icon.lmui-icon_tertiary {
+  opacity: var(--lmui-o-tertiary);
+}
+
+.lmui-icon.lmui-icon_quaternary {
+  opacity: var(--lmui-o-quaternary);
+}
+
+/* Colors */
+
+.lmui-icon.lmui-icon_red {
+  filter: var(--lmui-ic-red);
+}
+
+.lmui-icon.lmui-icon_green {
+  filter: var(--lmui-ic-green);
+}
+
+.lmui-icon.lmui-icon_white {
+  filter: var(--lmui-ic-white);
+  /* Will stay white in darkmode */
+}

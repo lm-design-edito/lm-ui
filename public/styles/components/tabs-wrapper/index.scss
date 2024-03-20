@@ -1,0 +1,24 @@
+// [WIP] uses variables from tab, maybe not that good
+
+.lmui-tabs-wrapper {
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 40px;
+  height: var(--lmui-len-tab-width-large);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: calc(var(--lmui-len-tab-padding-large) / 2);
+  padding: 0 calc(var(--lmui-len-tab-padding-large) / 2);
+  background: var(--lmui-c-main-tab-bg);
+  border: 1px solid var(--lmui-c-main-tab-border);
+  box-shadow: var(--lmui-c-main-tab-box-shadow);
+}
+
+.lmui-tabs-wrapper .lmui-tab:last-child {
+  border-right: unset;
+}
+
+.lmui-tabs-wrapper.lmui-tabs-wrapper_with-icon .lmui-tab {
+  padding: 0px 10px 0 14px;
+}

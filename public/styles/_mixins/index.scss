@@ -1,0 +1,58 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * :ROOT & :HOST
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+@mixin root {
+  :root,
+  :host { @content; }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * MIN / MAX WIDTH
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+@mixin max-width ($screen-width) {
+  @if $screen-width == 'x-large' {
+    @media (max-width: 1600px) { @content; }
+  } @else if $screen-width == 'large' {
+    @media (max-width: 1400px) { @content; }
+  } @else if $screen-width == 'medium' {
+    @media (max-width: 1000px) { @content; }
+  } @else if $screen-width == 'small' {
+    @media (max-width: 600px) { @content; }
+  } @else if $screen-width == 'x-small' {
+    @media (max-width: 480px) { @content; }
+  }
+}
+
+@mixin min-width ($screen-width) {
+  @if $screen-width == 'x-large' {
+    @media (min-width: 1600px) { @content; }
+  } @else if $screen-width == 'large' {
+    @media (min-width: 1400px) { @content; }
+  } @else if $screen-width == 'medium' {
+    @media (min-width: 1000px) { @content; }
+  } @else if $screen-width == 'small' {
+    @media (min-width: 600px) { @content; }
+  } @else if $screen-width == 'x-small' {
+    @media (min-width: 480px) { @content; }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * COLOR MODES
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+@mixin light-mode {
+  :root,
+  :host,
+  [data-color-mode="light"] { @content; }
+}
+
+@mixin strict-light-mode {
+  [data-color-mode="light"] { @content; }
+}
+
+@mixin dark-mode {
+  [data-color-mode="dark"] { @content; }
+}

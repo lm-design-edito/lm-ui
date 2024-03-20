@@ -1,6 +1,13 @@
 .wrapper {
-  background-color: lavender;
   max-width: 1100px;
+}
+
+.section__title {
+  margin-top: calc(2.5 * var(--lm-texts-large-scale-level-4));
+  margin-bottom: var(--lm-texts-large-scale-level-2);
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 600;
+  font-size: var(--lm-texts-scale-level-12);
 }
 
 .section__cards {

@@ -1,13 +1,21 @@
 .wrapper {
-  background-color: coral;
+  background-color: #FAFAFA;
+  border: 2px solid #DDDDDD;
+  border-radius: 4px;
 }
 
 .thumb {
   width: 100%;
   aspect-ratio: 16 / 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .label {
-  padding: 8px;
+  padding: 16px;
   text-align: center;
+  background-color: white;
+  font-family: var(--lmui-ff-the-antiqua-b);
+  font-size: var(--lm-texts-scale-level-8);
 }

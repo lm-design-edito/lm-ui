@@ -1,5 +1,7 @@
-import { Component, VNode } from 'preact'
+import { Component } from 'preact'
 import styles from './styles.module.scss'
+
+import Toggle from '@design-edito/new-app/components/UI/components/Toggle'
 
 type Props = {
   toggled?: boolean
@@ -13,11 +15,7 @@ export default class ColorModeToggler extends Component<Props> {
     if (props.toggled) wrapperClasses.push(styles['wrapper_toggled'])
     return <div className={wrapperClasses.join(' ')}>
       <div className={styles['label']}>Darkmode</div>
-      <div
-        class={styles['toggler']}
-        onClick={props.onToggle}>
-        <div class={styles['toggler-button']} />
-      </div>
+      <div onClick={props.onToggle}><Toggle /></div>
     </div>
   }
 }

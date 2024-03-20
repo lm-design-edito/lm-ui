@@ -1,0 +1,117 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-tab-bg: var(--lmui-c-snow-medium);
+  --lmui-c-main-tab-label: var(--lmui-c-slate-darker);
+  --lmui-c-main-tab-border: var(--lmui-c-snow-darker);
+  --lmui-c-main-tab-bg-hover: var(--lmui-c-snow-darker);
+  --lmui-c-main-tab-label-hover: var(--lmui-c-slate-darker);
+  --lmui-c-main-tab-bg-active: var(--lmui-c-smoke-lighter);
+  --lmui-c-main-tab-label-active: var(--lmui-slate-darker);
+  --lmui-c-main-tab-bg-disabled: var(--lmui-c-snow-medium);
+  --lmui-c-main-tab-label-disabled: var(--lmui-c-smoke-light);
+  --lmui-c-main-tab-bg-enabled: var(--lmui-c-white);
+  --lmui-c-main-tab-enabled-box-shadow: var(--lmui-bshd-tab-enabled-box-shadow-light);
+  --lmui-c-main-tab-label-enabled: var(--lmui-c-slate-darker);
+  --lmui-c-secondary-tab-border: var(--lmui-c-smoke-light);
+  --lmui-c-main-tab-box-shadow: var(--lmui-bshd-tab-box-shadow-light);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-tab-bg: var(--lmui-c-surface-500);
+  --lmui-c-main-tab-label: var(--lmui-c-smoke-light);
+  --lmui-c-main-tab-border: var(--lmui-c-surface-900);
+  --lmui-c-main-tab-bg-hover: var(--lmui-c-surface-900);
+  --lmui-c-main-tab-label-hover: var(--lmui-c-smoke-lighter);
+  --lmui-c-main-tab-bg-active: var(--lmui-c-smoke-lighter);
+  --lmui-c-main-tab-label-active: var(--lmui-c-slate-darker);
+  --lmui-c-main-tab-bg-disabled: var(--name-it-1);
+  --lmui-c-main-tab-enabled-box-shadow: var(--lmui-bshd-tab-enabled-box-shadow-dark);
+  --lmui-c-main-tab-label-disabled: var(--lmui-c-name-it-4);
+  --lmui-c-main-tab-bg-enabled: var(--lmui-c-snow-darker);
+  --lmui-c-main-tab-label-enabled: var(--lmui-c-slate-dark);
+  --lmui-c-secondary-tab-border: var(--lmui-c-slate-lighter);
+  --lmui-c-main-tab-box-shadow: var(--lmui-bshd-tab-box-shadow-dark);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-tab {
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--lmui-len-tab-padding-large) / 2);
+  align-items: center;
+  justify-content: center;
+  padding: 0px 14px;
+  width: 100%;
+  height: calc(var(--lmui-len-tab-width-large) - var(--lmui-len-tab-padding-large));
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--lmui-c-main-tab-label);
+  cursor: pointer;
+  transition: 0.45s var(--lmui-tfunc-ease-out-quint);
+  border-radius: 100px;
+  background: var(--lmui-c-main-tab-bg);
+
+  @include mixins.max-width('small') {
+    height: 26px;
+    font-size: 12px;
+  }
+}
+
+.lmui-tab:hover {
+  color: var(--lmui-c-main-tab-label-hover);
+  background: var(--lmui-c-main-tab-bg-hover);
+}
+
+.lmui-tab:active {
+  color: var(--lmui-c-main-tab-label-active);
+  background: var(--lmui-c-main-tab-bg-active);
+  transition: 0.12s ease-in;
+}
+
+.lmui-tab:disabled {
+  color: var(--lmui-c-main-tab-label-disabled);
+  background: var(--lmui-c-main-tab-bg-disabled);
+  pointer-events: none;
+}
+
+.lmui-tab.lmui-tab_enabled {
+  color: var(--lmui-c-main-tab-label-enabled);
+  background: var(--lmui-c-main-tab-bg-enabled);
+  box-shadow: var(--lmui-c-main-tab-enabled-box-shadow);
+  border-radius: 100px;
+  transition: 0.12s ease-in;
+}
+
+/* Tab's icon */
+
+.lmui-tab .lmui-tab__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  transform: scale(0.85);
+}
+
+.lmui-tab.lmui-tab_enabled .lmui-tab__icon .lmui-icon {
+  filter: var(--lmui-ic-black);
+}
+
+/* Content alignment modifier */
+
+.lmui-tab.lmui-row-reverse {
+  flex-direction: row-reverse;
+}

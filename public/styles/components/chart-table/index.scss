@@ -1,0 +1,120 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-chart-table-cell-bg: var(--lmui-c-snow-medium);
+  --lmui-c-chart-table-cell-text: var(--lmui-c-slate-darker);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-chart-table-cell-bg: var(--lmui-c-charcoal-light);
+  --lmui-c-chart-table-cell-text: var(--lmui-c-smoke-lighter);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-chart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--lmui-ff-marr-sans);
+
+  @include mixins.max-width('small') {
+    position: relative; /* [WIP] pourquoi juste sur small ? */
+  }
+}
+
+.lmui-chart-table .lmui-chart-table__cell {
+  position: relative;
+  padding: 10px 14px;
+  border: 1px solid var(--lmui-c-block-border);
+  font-size: 14px;
+  color: var(--lmui-c-chart-table-cell-text);
+
+  @include mixins.max-width('small') {
+    font-size: 12px;
+  }
+}
+
+.lmui-chart-table th {
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--lmui-c-chart-table-cell-text);
+  border: 1px solid var(--lmui-c-block-border);
+  padding: 10px 14px;
+  border: 1px solid var(--lmui-c-block-border);
+
+  @include mixins.max-width('small') {
+    font-size: 12px;
+  }
+}
+
+.lmui-chart-table tr:nth-child(even) {
+  background-color: var(--lmui-c-chart-table-cell-bg);
+}
+
+.lmui-chart-table td:first-child,
+.lmui-chart-table th:first-child {
+  @include mixins.max-width('small') {
+    position: sticky;
+    background-color: inherit;
+    left: 0;
+    z-index: 1;
+    box-shadow: 5px 5px 5px 5px black; /* [WIP] styles/variables/shadows ? */
+    overflow: visible;
+  }
+}
+
+/* Table with line label */
+
+.lmui-chart-table.lmui-chart-table_with-line-label .lmui-chart-table__cell:first-child {
+  border: none;
+  width: fit-content;
+  padding-left: 0;
+  text-align: right;
+  background-color: var(--lmui-c-block-bg);
+}
+
+@media (max-width:600px) {
+  .lmui-chart-table.lmui-chart-table_with-line-label .lmui-chart-table__cell:first-child {
+    width: fit-content;
+  }
+}
+
+.lmui-chart-table.lmui-chart-table_with-line-label .lmui-chart-table__cell:first-child::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  box-sizing: content-box;
+  border-radius: 100%;
+  right: -1px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--lmui-c-chart-timeline-point-outlined-border);
+  background: var(--lmui-c-chart-timeline-point-outlined-bg);
+  transform: translate(50%, -50%);
+}
+
+.lmui-chart-table.lmui-chart-table_with-line-label th:first-child {
+  border: none;
+}
+
+/* [WIP] chart__timeline inside chart-table ?? */
+.lmui-chart-table .lmui-chart__timeline-date_underline {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 0.2em;
+  text-decoration-color: red;
+  /* Mettez la couleur que vous voulez */
+}

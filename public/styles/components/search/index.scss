@@ -1,0 +1,298 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-search-border: var(--lmui-c-smoke-medium);
+  --lmui-c-main-search-border-hover: var(--lmui-c-sea-medium);
+  --lmui-c-search-box-shadow: var(--lmui-bshd-search-box-shadow-light);
+  --lmui-c-search-box-shadow-hover: var(--lmui-bshd-search-box-shadow-hover-light);
+  --lmui-c-main-search-placeholder: var(--lmui-c-slate-lighter);
+  --lmui-c-main-search-outline-focus: var(--lmui-c-snow-darker);
+  --lmui-c-main-search-type: var(--lmui-c-slate-darker);
+  --lmui-c-main-search-icon: var(--lmui-c-slate-dark);
+  --lmui-c-main-search-icon-hover: var(--lmui-c-sea-medium);
+  --lmui-c-main-search-bg-disabled: var(--lmui-c-snow-light);
+  --lmui-c-main-search-autocomplete-bg: var(--lmui-c-white);
+  --lmui-c-main-search-autocomplete-border: var(--lmui-c-smoke-lighter);
+  --lmui-c-main-search-autocomplete-label: var(--lmui-c-slate-darker);
+  --lmui-c-main-search-autocomplete-bg-hover: var(--lmui-c-snow-medium);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-search-border: var(--lmui-c-slate-light);
+  --lmui-c-main-search-border-hover: var(--lmui-c-sea-light);
+  --lmui-c-search-box-shadow: var(--lmui-bshd-search-box-shadow-dark);
+  --lmui-c-search-box-shadow-hover: var(--lmui-bshd-search-box-shadow-hover-dark);
+  --lmui-c-main-search-placeholder: var(--lmui-c-smoke-medium);
+  --lmui-c-main-search-outline-focus: var(--lmui-c-snow-darker);
+  --lmui-c-main-search-type: var(--lmui-c-white);
+  --lmui-c-main-search-icon: var(--lmui-c-white);
+  --lmui-c-main-search-icon-hover: var(--lmui-c-sea-light);
+  --lmui-c-main-search-bg-disabled: var(--lmui-c-slate-darker);
+  --lmui-c-main-search-autocomplete-bg: var(--lmui-c-charcoal-medium);
+  --lmui-c-main-search-autocomplete-border: var(--lmui-c-slate-light);
+  --lmui-c-main-search-autocomplete-label: var(--lmui-c-white);
+  --lmui-c-main-search-autocomplete-bg-hover: var(--lmui-c-slate-darker);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.lmui-search__bar {
+  position: relative;
+}
+
+.lmui-search__field {
+  box-sizing: border-box;
+  height: var(--lmui-len-search-autocomplete-height);
+  width: 100%;
+  padding: 0 0 0 16px;
+  border-radius: var(--lmui-len-rounded-search-radius);
+  border: 1px solid var(--lmui-c-main-search-border);
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--lmui-c-main-search-type);
+  background: transparent;
+  box-shadow: var(--lmui-c-search-box-shadow);
+  transition: box-shadow 0.3s ease-in;
+}
+
+.lmui-search__field::placeholder {
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--lmui-c-main-search-placeholder);
+}
+
+/* Hover State */
+
+.lmui-search__field:hover {
+  border: 1px solid var(--lmui-c-main-search-border-hover);
+  box-shadow: var(--lmui-c-search-box-shadow-hover);
+}
+
+/* Focus State */
+
+.lmui-search__field:focus {
+  outline: 0.5px solid var(--lmui-c-main-search-outline-focus);
+  box-shadow: var(--lmui-c-search-box-shadow-hover);
+}
+
+/* Disabled State */
+
+.lmui-search__field:disabled {
+  background-color: var(--lmui-c-main-search-bg-disabled);
+  box-shadow: unset;
+  pointer-events: none;
+}
+
+.lmui-search__field:disabled::placeholder,
+.lmui-search__field:disabled+.lmui-search__button {
+  opacity: 50%;
+}
+
+.lmui-search__button {
+  position: absolute;
+  right: calc((var(--lmui-len-search-autocomplete-height) - var(--lmui-len-search-button-height)) / 2);
+  top: calc((var(--lmui-len-search-autocomplete-height) - var(--lmui-len-search-button-height)) / 2);
+  height: var(--lmui-len-search-button-height);
+  width: var(--lmui-len-search-button-height);
+  border-radius: 100%;
+  background-color: var(--lmui-c-main-search-icon);
+  mask-image: url("https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/search.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/search.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  cursor: pointer;
+  transform: var(--lmui-len-search-button-scale);
+}
+
+/* Button Hover State */
+
+.lmui-search__button:hover {
+  background-color: var(--lmui-c-main-search-icon-hover);
+}
+
+/* Size S */
+
+.lmui-search.lmui-search_s .lmui-search__bar .lmui-search__field {
+  padding: 0 0 0 10px;
+  height: 36px;
+  font-size: 13px;
+}
+
+.lmui-search.lmui-search_s .lmui-search__bar .lmui-search__button {
+  transform: scale(0.8);
+}
+
+/* Main search-engine secondary */
+
+.lmui-search.lmui-search-secondary .lmui-search__bar .lmui-search__field {
+  border-radius: 2px;
+}
+
+.lmui-search.lmui-search-secondary .lmui-search-autocomplete-results {
+  border-radius: 2px;
+}
+
+/* Main search-engine with autocomplete */
+
+/* Rounded */
+
+.lmui-search ul,
+.lmui-search li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lmui-search.lmui-search_autocomplete .lmui-search__bar .lmui-search__field {
+  border-radius: var(--lmui-len-rounded-search-half-radius);
+  border: unset;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: var(--lmui-c-main-search-border);
+}
+
+.lmui-search.lmui-search_autocomplete .lmui-search__bar .lmui-search__field:hover {
+  box-shadow: initial;
+}
+
+.lmui-search.lmui-search_autocomplete .lmui-search__bar .lmui-search__field:focus {
+  outline: unset;
+  box-shadow: initial;
+}
+
+/* Les résultats */
+
+.lmui-search-autocomplete-results {
+  box-sizing: border-box;
+  background-color: var(--lmui-c-main-search-autocomplete-bg);
+  border-style: solid;
+  border-width: 0px 1px 1px 1px;
+  border-color: var(--lmui-c-main-search-border);
+  border-radius: 0 0 calc(var(--lmui-len-rounded-search-half-radius)) var(--lmui-len-rounded-search-half-radius);
+  overflow: auto;
+  border-width: 0;
+  z-index: 3;
+}
+
+.lmui-search.lmui-search_autocomplete {
+  height: var(--lmui-len-search-autocomplete-height);
+  overflow-y: visible;
+}
+
+.lmui-search__suggestion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--lmui-c-main-search-autocomplete-label);
+  border-bottom: 1px solid var(--lmui-c-main-search-autocomplete-border);
+  padding: 0 12px;
+  transition: background-color 0.18s ease-in;
+  height: var(--lmui-len-search-autocomplete-height);
+  margin-top: unset; /* Keep this otherwise the website css will add a margin (: */ /* [WIP] maybe not necessary now that we have shadow roots */
+}
+
+.lmui-search.lmui-search_s.lmui-search_autocomplete .lmui-search-autocomplete-results .lmui-search__suggestion {
+  font-size: 13px;
+  font-weight: 400;
+  height: var(--lmui-len-search-autocomplete-height);
+}
+
+.lmui-search-autocomplete-results li:last-child {
+  border-bottom: unset;
+}
+
+.lmui-search__suggestion:hover {
+  background-color: var(--lmui-c-main-search-autocomplete-bg-hover);
+  cursor: pointer;
+}
+
+/* [WIP] lmui-active-search ?? */
+.lmui-search.lmui-search_autocomplete.lmui-active-search .lmui-search__bar .lmui-search__field {
+  border-radius: var(--lmui-len-rounded-search-half-radius) var(--lmui-len-rounded-search-half-radius) 0 0;
+}
+
+.lmui-search_autocomplete.lmui-active-search .lmui-search-autocomplete-results {
+  border-width: 0 1px 1px 1px;
+}
+
+/* Modification du border-radius pour l'expand rounded */
+
+.lmui-search.lmui-search_autocomplete:not(.lmui-search-secondary).lmui-active-search .lmui-search__bar .lmui-search__field {
+  border-radius: calc(var(--lmui-len-search-autocomplete-height) / 2) calc(var(--lmui-len-search-autocomplete-height) / 2) 0 0;
+}
+
+/* Modification du border-radius pour l'expand secondary */
+
+.lmui-search.lmui-search_autocomplete.lmui-search-secondary.lmui-active-search .lmui-search__bar .lmui-search__field {
+  border-radius: 2px 2px 0 0;
+}
+
+/* Pas de résultat */
+
+.lmui-search-autocomplete-results li.no-results {
+  cursor: default;
+}
+
+.lmui-search-autocomplete-results li.no-results:hover {
+  background-color: inherit;
+}
+
+.lmui-search-autocomplete-results li:not(.no-results).pre-selected {
+  background-color: var(--lmui-c-snow-light);
+}
+
+/* Reset button */
+
+.lmui-search__reset-button {
+  position: absolute;
+  right: calc((var(--lmui-len-search-autocomplete-height) - var(--lmui-len-search-button-height)) / 2);
+  top: calc((var(--lmui-len-search-autocomplete-height) - var(--lmui-len-search-button-height)) / 2);
+  height: var(--lmui-len-search-button-height);
+  width: var(--lmui-len-search-button-height);
+  transform: scale(0.8);
+  border-radius: 100%;
+  background-color: var(--lmui-c-main-search-icon);
+  mask-image: url(https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/close.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url(https://assets-decodeurs.lemonde.fr/redacweb/editorial-design-sys-assets/close.svg);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  cursor: pointer;
+  visibility: hidden;
+  transition: background-color 0.3s ease-in;
+}
+
+.lmui-search__reset-button:hover {
+  background-color: var(--lmui-c-red-medium);
+}
+
+/* Reset button - Size S */
+
+.lmui-search.lmui-search_s.lmui-search_autocomplete .lmui-search__bar .lmui-search__reset-button {
+  transform: scale(0.6);
+}

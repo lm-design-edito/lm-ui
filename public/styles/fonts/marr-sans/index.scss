@@ -5,9 +5,9 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url(../fonts/ms/400.eot?#iefix) format("embedded-opentype"),
-    url(../fonts/ms/400.woff2) format("woff2"),
-    url(../fonts/ms/400.woff) format("woff");
+    url(../../fonts/ms/400.eot?#iefix) format("embedded-opentype"),
+    url(../../fonts/ms/400.woff2) format("woff2"),
+    url(../../fonts/ms/400.woff) format("woff");
 }
 
 /* Medium */
@@ -17,9 +17,9 @@
   font-style: normal;
   font-weight: 500;
   src:
-    url(../fonts/ms/500.eot?#iefix) format("embedded-opentype"),
-    url(../fonts/ms/500.woff2) format("woff2"),
-    url(../fonts/ms/500.woff) format("woff");
+    url(../../fonts/ms/500.eot?#iefix) format("embedded-opentype"),
+    url(../../fonts/ms/500.woff2) format("woff2"),
+    url(../../fonts/ms/500.woff) format("woff");
 }
 
 /* Semibold */
@@ -29,9 +29,9 @@
   font-style: normal;
   font-weight: 600;
   src:
-    url(../fonts/ms/600.eot?#iefix) format("embedded-opentype"),
-    url(../fonts/ms/600.woff2) format("woff2"),
-    url(../fonts/ms/600.woff) format("woff");
+    url(../../fonts/ms/600.eot?#iefix) format("embedded-opentype"),
+    url(../../fonts/ms/600.woff2) format("woff2"),
+    url(../../fonts/ms/600.woff) format("woff");
 }
 
 /* Bold (Not hosted by lemonde.fr) */
@@ -41,8 +41,8 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url(../fonts/ms/700.woff2) format("woff2"),
-    url(../fonts/ms/700.woff) format("woff");
+    url(../../fonts/ms/700.woff2) format("woff2"),
+    url(../../fonts/ms/700.woff) format("woff");
 }
 
 /* Ultrablack (Not hosted by lemonde.fr) */
@@ -52,8 +52,8 @@
   font-style: normal;
   font-weight: 950;
   src:
-    url(../fonts/ms/950.woff2) format("woff2"),
-    url(../fonts/ms/950.woff) format("woff");
+    url(../../fonts/ms/950.woff2) format("woff2"),
+    url(../../fonts/ms/950.woff) format("woff");
 }
 
 /* Ultrablack italic (Not hosted by lemonde.fr) */
@@ -62,7 +62,7 @@
   font-display: swap;
   font-style: italic;
   font-weight: 950;
-  src: url(../fonts/ms/950-i.woff2);
+  src: url(../../fonts/ms/950-i.woff2);
 }
 
 :root, :host {

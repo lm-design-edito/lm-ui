@@ -1,0 +1,140 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-main-toggle-bg: var(--lmui-c-smoke-lighter);
+  --lmui-c-main-toggle-switch: var(--lmui-c-white);
+  --lmui-c-main-toggle-bg-hover: var(--lmui-c-smoke-light);
+  --lmui-c-main-toggle-bg-enabled: var(--lmui-c-slate-darker);
+  --lmui-c-main-toggle-bg-enabled-hover: var(--lmui-c-slate-medium);
+  --lmui-c-main-toggle-label: var(--lmui-c-slate-darker);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-main-toggle-bg: var(--lmui-c-smoke-dark);
+  --lmui-c-main-toggle-switch: var(--lmui-c-white);
+  --lmui-c-main-toggle-bg-hover: var(--lmui-c-smoke-medium);
+  --lmui-c-main-toggle-bg-enabled: var(--lmui-c-sea-light);
+  --lmui-c-main-toggle-bg-enabled-hover: var(--lmui-c-sea-medium);
+  --lmui-c-main-toggle-label: var(--lmui-c-snow-lighter);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-toggle {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.lmui-toggle__input {
+  display: none;
+}
+
+.lmui-toggle__label {
+  display: none;
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--lmui-c-main-toggle-label);
+}
+
+.lmui-toggle.lmui-toggle-with-label .lmui-toggle__label {
+  display: inherit;
+}
+
+.lmui-toggle__fake {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 26px;
+  color: transparent;
+  user-select: none;
+
+  @include mixins.max-width('small') {
+    width: 36px;
+    height: 18px;
+  }
+}
+
+.lmui-toggle__fake::before,
+.lmui-toggle__fake::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.lmui-toggle__fake::before {
+  width: 100%;
+  height: 100%;
+  background-color: var(--lmui-c-main-toggle-bg);
+  border-radius: 40px;
+  transition: background-color 0.25s ease-in;
+}
+
+.lmui-toggle__fake::after {
+  top: 1px;
+  left: 1px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--lmui-c-main-toggle-switch);
+  -webkit-transition: left 0.25s ease-in;
+  transition: left 0.25s ease-in;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+
+  @include mixins.max-width('small') {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.lmui-toggle__fake:hover::before {
+  background-color: var(--lmui-c-main-toggle-bg-hover);
+}
+
+/* Checked State */
+
+.lmui-toggle__input:checked + .lmui-toggle__fake::before {
+  background-color: var(--lmui-c-main-toggle-bg-enabled);
+}
+
+.lmui-toggle__input:checked + .lmui-toggle__fake:hover::before {
+  background-color: var(--lmui-c-main-toggle-bg-enabled-hover);
+}
+
+.lmui-toggle__input:checked + .lmui-toggle__fake::after {
+  left: 27px;
+
+  @include mixins.max-width('small') {
+    left: 19px;
+  }
+}
+
+/* Size S */
+
+.lmui-toggle.lmui-toggle_s .lmui-toggle__fake {
+  width: 36px;
+  height: 18px;
+}
+
+.lmui-toggle.lmui-toggle_s .lmui-toggle__fake::after {
+  width: 16px;
+  height: 16px;
+}
+
+.lmui-toggle.lmui-toggle_s .lmui-toggle__input:checked + .lmui-toggle__fake::after {
+  left: 19px;
+}

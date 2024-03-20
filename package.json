@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@design-edito/new-app": "^1.0.0-delta.0",
+    "html-format": "^1.1.6",
     "preact": "^10.19.4"
   }
 }

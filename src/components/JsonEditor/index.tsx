@@ -1085,7 +1085,7 @@ export class ObjectValueEditor extends Component<ObjectValueEditorProps> {
               data-value={key}>
               <StringValueEditor
                 value={key}
-                rule={!isOptional ? [key] : undefined}
+                rule={(!isOptional || preventPropertyCreation) ? [key] : undefined}
                 onChange={newKey => handleKeyChange(key, newKey)}
                 path={path !== undefined ? [...path, key] : undefined} />
             </span>

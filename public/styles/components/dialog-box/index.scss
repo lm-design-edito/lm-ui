@@ -1,0 +1,32 @@
+@use '../../_mixins/index.scss' as mixins;
+
+.lmui-dialog-box {
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 5px;
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: #2A303C;
+  background-color: rgba(255, 255, 255, 0.82);
+  box-shadow: 0px 12px 26px 0px rgba(1, 17, 59, 0.09), 0 1px 3px 0px rgba(1, 17, 59, 0.08); // [WIP] styles/variables/shadows ?
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+
+  @include mixins.max-width('small') {
+    max-width: 90%;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@include mixins.dark-mode {
+  .lmui-dialog-box {
+    color: rgba(255, 255, 255, 0.85); // [WIP] styles/variables/colors ?
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 26px 0px rgba(65, 189, 238, 0.05), 0 1px 3px 0px rgba(65, 189, 238, 0.03); // [WIP] styles/variables/shadows ?
+  }
+}

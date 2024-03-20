@@ -1,0 +1,348 @@
+@use '../../_mixins/index.scss' as mixins;
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * VARIABLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+@include mixins.light-mode {
+  --lmui-c-chart-title: var(--lmui-c-slate-medium);
+  --lmui-c-chart-description-text: var(--lmui-c-slate-medium);
+  --lmui-c-chart-description-text-strong: var(--lmui-c-slate-medium);
+  --lmui-c-chart-instructions-bg: var(--lmui-c-snow-light);
+  --lmui-c-chart-instructions-text: var(--lmui-c-smoke-darker);
+  --lmui-c-chart-source-text: var(--lmui-c-slate-light);
+  --lmui-c-chart-link-underline: var(--lmui-c-sea-dark);
+  --lmui-c-chart-link-text-hover: var(--lmui-c-sea-dark);
+  --lmui-c-chart-update: var(--lmui-c-sea-medium);
+  --lmui-c-chart-legend: var(--lmui-c-slate-medium);
+
+  // Timeline
+  --lmui-c-chart-timeline-date: var(--lmui-c-slate-medium);
+  --lmui-c-chart-timeline-point-filled-bg: var(--lmui-c-slate-darker);
+  --lmui-c-chart-timeline-point-outlined-bg: var(--lmui-c-block-bg);
+  --lmui-c-chart-timeline-point-outlined-border: var(--lmui-c-slate-darker);
+  --lmui-c-chart-timeline-event-text: var(--lmui-c-slate-darker);
+}
+
+@include mixins.dark-mode {
+  --lmui-c-chart-title: var(--lmui-c-snow-light);
+  --lmui-c-chart-description-text: var(--lmui-c-smoke-medium);
+  --lmui-c-chart-description-text-strong: var(--lmui-c-snow-light);
+  --lmui-c-chart-instructions-bg: var(--lmui-c-slate-darker);
+  --lmui-c-chart-instructions-text: var(--lmui-c-smoke-medium);
+  --lmui-c-chart-source-text: var(--lmui-c-smoke-medium);
+  --lmui-c-chart-link-text-hover: var(--lmui-c-sea-light);
+  --lmui-c-chart-link-underline: var(--lmui-c-sea-light);
+  --lmui-c-chart-update: var(--lmui-c-sea-light);
+  --lmui-c-chart-legend: var(--lmui-c-smoke-light);
+
+  // Timeline
+  --lmui-c-chart-timeline-date: var(--lmui-c-smoke-light);
+  --lmui-c-chart-timeline-point-filled-bg: var(--lmui-c-white);
+  --lmui-c-chart-timeline-point-outlined-bg: var(--lmui-c-block-bg);
+  --lmui-c-chart-timeline-point-outlined-border: var(--lmui-c-white);
+  --lmui-c-chart-timeline-event-text: var(--lmui-c-smoke-lighter);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ * STYLES
+ *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.lmui-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--lmui-c-block-bg);
+  box-shadow: var(--lmui-c-block-box-shadow);
+  padding: 22px 24px 22px 24px;
+  border: 1px solid var(--lmui-c-block-border);
+  border-radius: 6px;
+
+  @include mixins.max-width('small') {
+    padding: 20px 16px 20px 16px;
+    gap: 8px;
+  }
+}
+
+.lmui-chart strong {
+  font-weight: 500;
+  color: var(--lmui-c-chart-description-text-strong);
+}
+
+.lmui-chart tr {
+  background-color: var(--lmui-c-block-bg);
+}
+
+/* Meta-data */
+
+.lmui-chart__update {
+  margin: 0;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--lmui-c-chart-update);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  @include mixins.max-width('small') {
+    font-size: 11px;
+  }
+}
+
+/* Title */
+
+.lmui-chart__title {
+  margin: 0;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--lmui-c-chart-title);
+
+  @include mixins.max-width('small') {
+    font-size: 18px;
+  }
+}
+
+/* Description */
+
+.lmui-chart__description {
+  margin: 0 0 4px 0;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--lmui-c-chart-description-text);
+
+  @include mixins.max-width('small') {
+    font-size: 14px;
+  }
+}
+
+/* Legend */
+
+.lmui-chart__legend {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--lmui-c-chart-legend);
+}
+
+.lmui-chart__legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.lmui-chart__legend-bullet {
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background-color: black;
+}
+
+.lmui-chart__legend-line {
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background-color: black;
+}
+
+/* Instructions */
+
+.lmui-chart__instructions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+  border-radius: 5px;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--lmui-c-chart-instructions-text);
+  padding: 15px;
+  background-color: var(--lmui-c-chart-instructions-bg);
+  margin: 8px 0;
+
+  @include mixins.max-width('small') {
+    font-size: 13px;
+  }
+}
+
+.lmui-chart__instructions p {
+  margin: auto 0;
+}
+
+.lmui-chart__instructions .lmui-chart__instructions-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 3px;
+}
+
+/* Source */
+
+.lmui-chart__source {
+  margin: 4px 0 0 0;
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--lmui-c-chart-source-text);
+
+  @include mixins.max-width('small') {
+    font-size: 11px;
+  }
+}
+
+/* Scroller */
+.lmui-chart__scroller {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* ---------------Chart Timeline---------------- */
+/* [WIP] maybe lmui-chart-timeline, or just lmui-timeline ?  */
+
+.lmui-chart__timeline {
+  padding: 20px 0 0 0;
+}
+
+.lmui-chart__timeline ul {
+  list-style-type: none;
+  position: relative;
+}
+
+.lmui-chart__timeline ul li {
+  display: flex;
+  align-items: baseline;
+}
+
+
+.lmui-chart__timeline .lmui-chart__timeline-event {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+/* Style de la timeline */
+
+.lmui-chart__timeline .lmui-chart__timeline-event::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  width: 1px;
+  height: 100%;
+  background: var(--lmui-c-main-divider);
+  z-index: 1;
+}
+
+.lmui-chart__timeline li:last-child .lmui-chart__timeline-event::after {
+  display: none;
+}
+
+/* Style du point */
+
+.lmui-chart__timeline .lmui-chart__timeline-point {
+  position: absolute;
+  content: '';
+  box-sizing: content-box;
+  border-radius: 100%;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--lmui-c-chart-timeline-point-outlined-border);
+  background: var(--lmui-c-chart-timeline-point-outlined-bg);
+  transform: translate(-2px);
+  z-index: 10;
+  aspect-ratio: 1;
+
+  @include mixins.max-width('small') {
+    top: 5px;
+  }
+}
+
+.lmui-chart__timeline .lmui-chart__timeline-point.lmui-chart__timeline-point-filled {
+  background: var(--lmui-c-chart-timeline-point-filled-bg);
+}
+
+/* Timeline date style */
+
+.lmui-chart__timeline .lmui-chart__timeline-date {
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lmui-c-chart-timeline-date);
+  width: 70px;
+  margin-right: 20px;
+  text-align: right;
+  transition: 0.7s var(--lmui-tfunc-ease-out-quint);
+
+  @include mixins.max-width('small') {
+    .lmui-chart__timeline .lmui-chart__timeline-date {
+      font-size: 11px;
+      width: 40px;
+    }
+  }
+}
+
+.lmui-chart__timeline .lmui-chart__timeline-date.lmui-chart__timeline-date_underline {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 0.2em;
+  text-decoration-color: red;
+  /* Mettez la couleur que vous voulez  */
+}
+
+/* Timeline tag style */
+
+.lmui-chart__timeline-text-tag {
+  font-family: var(--lmui-ff-marr-sans-condensed);
+  font-size: 11px;
+  color: var(--lmui-c-chart-timeline-date);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 5px;
+  border-radius: 60px;
+  margin-right: 6px;
+  border: 1px solid black;
+}
+
+/* Timeline text  */
+
+.lmui-chart__timeline .lmui-chart__timeline-text {
+  font-family: var(--lmui-ff-marr-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--lmui-c-chart-timeline-event-text);
+  width: 100%;
+  padding-bottom: 36px;
+  padding-left: 30px;
+  margin: 0;
+
+  @include mixins.max-width('small') {
+    font-size: 14px;
+    padding-bottom: 24px;
+  }
+}
+
+.lmui-chart__timeline li:last-child .lmui-chart__timeline-text {
+  padding-bottom: 15px;
+}

@@ -2,7 +2,7 @@ import { createContext } from 'preact'
 import { pageGroups, getPageGroup, getPage, Page } from 'pages'
 import App from './App'
 
-type AppContextType = {
+export type AppContextType = {
   togglePage: App['togglePage']
   toggleDarkMode: App['toggleDarkmode']
   pageGroups: typeof pageGroups

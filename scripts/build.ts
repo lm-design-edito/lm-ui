@@ -5,6 +5,9 @@ import chokidar from 'chokidar'
 import * as sass from 'sass'
 import { context, BuildOptions } from 'esbuild'
 import { sassPlugin, postcssModules } from 'esbuild-sass-plugin'
+import inlineImageModule from 'esbuild-plugin-inline-image'
+
+const inlineImagePulgin = inlineImageModule as unknown as typeof inlineImageModule.default
 
 // Bundle src to dist/demo
 const buildOptions: BuildOptions = {
@@ -17,6 +20,9 @@ const buildOptions: BuildOptions = {
   target: ['esnext'],
   tsconfig: path.join(process.cwd(), 'src/tsconfig.json'),
   plugins: [
+    inlineImagePulgin({
+      limit: -1
+    }),
     sassPlugin({
       filter: /\.module\.scss$/,
       type: 'css',

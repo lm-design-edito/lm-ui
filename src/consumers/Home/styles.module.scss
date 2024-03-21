@@ -3,11 +3,12 @@
 }
 
 .section__title {
-  margin-top: calc(2.5 * var(--lm-texts-large-scale-level-4));
+  color: var(--crypt-c-default-texts);
+  margin-top: calc(2 * var(--lm-texts-large-scale-level-4));
   margin-bottom: var(--lm-texts-large-scale-level-2);
   font-family: var(--lmui-ff-marr-sans);
   font-weight: 600;
-  font-size: var(--lm-texts-scale-level-12);
+  font-size: var(--lm-texts-scale-level-14);
 }
 
 .section__cards {

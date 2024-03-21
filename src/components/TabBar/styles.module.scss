@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+}
+
+.tab {
+  padding: 2px 4px;
+  transition: border-bottom var(--crypt-d-transition-main)
+}
+
+.tab.tab_active {
+  border-bottom: 4px solid black;
+}

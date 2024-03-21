@@ -2,6 +2,8 @@ import { Component, render } from 'preact'
 import format from 'html-format'
 import Button, { Props as ButtonProps } from '@design-edito/new-app/components/UI/components/Button'
 import { JsonEditor, Value as JsonValue, Scheme } from 'components/JsonEditor'
+import CompPresentationText from 'components/CompPresentationText'
+import CompEditor from 'components/CompEditor'
 
 export const id = 'button'
 export const name = 'Button'
@@ -74,13 +76,14 @@ export const Content = class ButtonPage extends Component<Props, State> {
     const tempContainer = document.createElement('div')
     render(<Button {...state.buttonProps} />, tempContainer)
     return <div>
-      <JsonEditor
-        initValue={this.state.buttonProps as JsonValue}
+      <CompPresentationText>
+        I am a simple button.
+      </CompPresentationText>
+      <CompEditor
+        component={Button}
+        initialProps={buttonInitProps}
         scheme={buttonPropsScheme}
-        onChange={val => this.setState({ buttonProps: val as ButtonProps })} />
-      <div ref={n => { this.$buttonWrapper = n }}>
-        <Button {...state.buttonProps} />
-      </div>
+        onChange={val => this.setState({ buttonProps: val })} />
       <pre>
         {format(tempContainer.innerHTML)}
       </pre>

@@ -1,10 +1,13 @@
 import { VNode } from 'preact'
+import * as audioquoteData from './audioquote'
+import * as scrllgngnData from './scrllgngn'
 import * as buttonData from './button'
 
 export type Page = {
   id: string,
   name: string | VNode
   thumb: string | VNode
+  thumb_wide?: string | VNode
   content: string | VNode
 }
 
@@ -25,15 +28,15 @@ export const pageGroups: PageGroup[] = [{
   name: 'Components',
   cardsPerLine: 2,
   pages: [{
-    id: 'scrllgngn',
-    name: 'Scrllgngn',
-    thumb: 'thumb-url.com/img.jpg',
-    content: <>The content of Scrllgngn.</>
+    id: scrllgngnData.id,
+    name: scrllgngnData.name,
+    thumb: scrllgngnData.thumb,
+    content: <scrllgngnData.Content />
   }, {
-    id: 'audioquote',
-    name: 'Audioquote',
-    thumb: 'thumb-url.com/img.jpg',
-    content: <>The content of Audioquote.</>
+    id: audioquoteData.id,
+    name: audioquoteData.name,
+    thumb: audioquoteData.thumb,
+    content: <audioquoteData.Content />
   }]
 }, {
 

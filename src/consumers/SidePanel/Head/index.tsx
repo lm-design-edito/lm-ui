@@ -1,5 +1,6 @@
 import { Component, VNode } from 'preact'
 import styles from './styles.module.scss'
+import backArrowBase64Data  from './back-arrow.svg'
 
 type Props = {
   content?: VNode | string
@@ -12,7 +13,8 @@ export default class Head extends Component<Props> {
     return <div
       className={styles['wrapper']}
       onClick={props.onClick}>
-      {'<—'} {props.content}
+      <img className={styles['icon']} src={backArrowBase64Data} />
+      <span className={styles['label']}>{props.content}</span>
     </div>
   }
 }

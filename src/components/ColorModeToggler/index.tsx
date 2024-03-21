@@ -15,7 +15,10 @@ export default class ColorModeToggler extends Component<Props> {
     if (props.toggled) wrapperClasses.push(styles['wrapper_toggled'])
     return <div className={wrapperClasses.join(' ')}>
       <div className={styles['label']}>Darkmode</div>
-      <div onClick={props.onToggle}><Toggle /></div>
+      <Toggle
+        size='small'
+        onToggle={props.onToggle}
+        defaultChecked={props.toggled} />
     </div>
   }
 }

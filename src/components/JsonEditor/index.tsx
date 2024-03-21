@@ -1100,7 +1100,7 @@ export class ObjectValueEditor extends Component<ObjectValueEditorProps> {
             className={`${wrapperMainClass}__create-optional-property`}
             data-value={key}
             onClick={() => handlePropertyCreation(key)}>
-            Create optional key: {key}
+            + {key}?
           </button>
         ))}
         {<button 
@@ -1118,7 +1118,7 @@ export class ObjectValueEditor extends Component<ObjectValueEditorProps> {
 type JsonEditorProps = {
   initValue?: Value
   scheme?: Scheme.Scheme
-  onChange: (value: Value) => void
+  onChange?: (value: Value) => void
 }
 
 type JsonEditorState = {

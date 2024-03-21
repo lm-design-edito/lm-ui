@@ -39,7 +39,6 @@ export default class App extends Component<Props, State> {
   }
 
   toggleDarkmode () {
-    console.log('tgl')
     this.setState(curr => ({
       ...curr,
       isDarkmode: !curr.isDarkmode

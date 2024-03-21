@@ -1,21 +1,38 @@
 .wrapper {
-  background-color: #FAFAFA;
-  border: 2px solid #DDDDDD;
+  --aspect-ratio: calc(16 / 10);
+  position: relative;
+  background-color: var(--crypt-c-elevation-1);
+  border: 2px solid var(--crypt-c-main-borders);
   border-radius: 4px;
 }
 
 .thumb {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: var(--aspect-ratio);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: var(--lm-texts-scale-level-8);
+}
+
+.thumb > * {
+  max-width: 100%;
+}
+
+.no-click-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  aspect-ratio: var(--aspect-ratio);
+  background-color: transparent;
 }
 
 .label {
   padding: 16px;
   text-align: center;
-  background-color: white;
+  background-color: var(--crypt-c-article-bg);
   font-family: var(--lmui-ff-the-antiqua-b);
   font-size: var(--lm-texts-scale-level-8);
+  color: var(--crypt-c-default-texts);
 }

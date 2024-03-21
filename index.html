@@ -28,6 +28,8 @@
         height: 24px;
       }
 
+      /* Boolean */
+
       .json-editor .boolean-value-editor {
         width: 16px;
         height: 16px;
@@ -47,6 +49,19 @@
         color: forestgreen;
       }
 
+      /* String */
+      .json-editor .string-value-editor.string-value-editor_input {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      /* Object */
+
+      .json-editor .object-value-editor__opening-brace,
+      .json-editor .object-value-editor__closing-brace {
+        color: var(--crypt-c-default-texts);
+      }
+
       .json-editor .object-value-editor__properties {
         padding: 8px 0;
       }
@@ -63,6 +78,15 @@
       .json-editor .object-value-editor__property + .object-value-editor__create-optional-property,
       .json-editor .object-value-editor__property + .object-value-editor__create-property {
         margin-top: 12px;
+      }
+
+      .json-editor .object-value-editor__create-optional-property {
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        text-decoration: underline;
+        cursor: pointer;
+        color: var(--crypt-c-default-texts);
       }
 
       .json-editor .object-value-editor__delete-property {

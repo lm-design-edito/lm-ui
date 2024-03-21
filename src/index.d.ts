@@ -3,10 +3,7 @@ declare module '*.module.scss' {
   export = content
 }
 
-declare module 'https://assets-decodeurs.lemonde.fr/design-edito/v1.beta/shared/index.js?idle' {
-  export default any
-}
-
-declare module 'http://localhost:3000/shared/index.js?idle' {
-  export default any
+declare module '*.svg' {
+  const content: string;
+  export default content;
 }

@@ -1,7 +1,39 @@
 .wrapper {
+  --height: 66px;
+  --padding: 20px;
   position: relative;
-  background-color: white;
-  padding: 16px;
+  background-color: var(--crypt-c-article-bg);
+  padding: var(--padding);
+}
+
+.logo-slot {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: calc(var(--height) - calc(2 * var(--padding)));
+  position: relative;
+  transition: filter var(--crypt-d-transition-main);
+}
+
+:global([data-color-mode="dark"]) .logo {
+  filter: invert(1);
+}
+
+.crypt {
+  position: relative;
+  font-family: var(--lmui-ff-the-antiqua-b);
+  font-size: var(--lm-texts-scale-level-10);
+  color: var(--crypt-c-default-texts);
+}
+
+.crypt::before {
+  content: '|';
+  position: relative;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-weight: 100;
 }
 
 .separator {
@@ -10,5 +42,5 @@
   left: 16px;
   right: 16px;
   height: 1px;
-  background-color: #DDDDDD;
+  background-color: var(--crypt-c-main-borders);
 }

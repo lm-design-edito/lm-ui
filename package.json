@@ -26,6 +26,7 @@
     "@types/node": "^20.11.17",
     "chokidar": "^3.6.0",
     "esbuild": "^0.20.0",
+    "esbuild-plugin-inline-image": "^0.0.9",
     "esbuild-sass-plugin": "^3.0.0",
     "fs-extra": "^11.2.0",
     "postcss": "^8.4.35",
@@ -34,7 +35,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@design-edito/new-app": "^1.0.0-delta.0",
+    "@design-edito/new-app": "^1.0.0-delta.2",
     "html-format": "^1.1.6",
     "preact": "^10.19.4"
   }

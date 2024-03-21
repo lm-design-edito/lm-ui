@@ -1,8 +1,19 @@
 .wrapper {
+  background-color: var(--crypt-c-elevation-1);
   padding: 16px;
   display: flex;
   align-items: center;
   gap: 8px;
+  box-shadow: var(--crypt-bsh-medium);
+  border-radius: 1000px;
+  letter-spacing: -.01em;
+  cursor: pointer;
+}
+
+.label {
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  color: var(--crypt-c-default-texts);
 }
 
 .toggler {

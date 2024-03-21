@@ -1,0 +1,20 @@
+.wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: height 400ms;
+}
+
+.wrapper.wrapper_opened {
+  height: var(--target-height);
+  transition: height 400ms;
+}
+
+.inner {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.wrapper.wrapper_opened .inner {
+  opacity: 1;
+  transition: opacity 200ms 200ms;
+}

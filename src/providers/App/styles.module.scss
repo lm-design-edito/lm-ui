@@ -1,41 +1,8 @@
-:global(*) {
-  transition: 
-    background-color var(--crypt-d-transition-main),
-    background var(--crypt-d-transition-main),
-    color var(--crypt-d-transition-main),
-    opacity var(--crypt-d-transition-main),
-    border var(--crypt-d-transition-main),
-    box-shadow var(--crypt-d-transition-main);
-}
-
-:global(:root) {
-  /* Durations */
-  --crypt-d-transition-main: 400ms;
-
-  /* Colors */
-  --crypt-c-article-bg: white;
-  --crypt-c-elevation-1: #FAFAFA;
-  --crypt-c-main-borders: #DDDDDD;
-  --crypt-c-opacifier-bg: rgb(0, 0, 0, .8);
-  --crypt-c-default-texts: #101010;
-  --crypt-c-light-text: rgb(16, 16, 16, .55);
-  /* Shadows */
-  --crypt-bsh-big: 0 0 40px 0 rgb(0, 0, 0, .3);
-  --crypt-bsh-medium: 0 0 20px 0 rgb(0, 0, 0, .2);
-
-  [data-color-mode="dark"] {
-    /* Colors */
-    --crypt-c-article-bg: #101010;
-    --crypt-c-elevation-1: #202020;
-    --crypt-c-main-borders: #333333;
-    --crypt-c-opacifier-bg: rgb(24, 24, 24, .85);
-    --crypt-c-default-texts: #FAFAFA;
-    --crypt-c-light-text: rgb(250, 250, 250, .6);
-    /* Shadows */
-    --crypt-bsh-big: 0 0 40px 0 rgb(0, 0, 0, .7);
-    --crypt-bsh-medium: 0 0 20px 0 rgb(0, 0, 0, .8);
-  }
-}
+/* * * * * * * * * * * * * * * * * * * * *
+ *
+ * APP LAYOUT
+ *
+ * * * * * * * * * * * * * * * * * * * * */
 
 :global(body):has(.wrapper.wrapper_panel-open) {
   overflow: hidden;

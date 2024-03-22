@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.copy-btn {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: var(--crypt-c-article-bg);
+  padding: 4px;
+  transition: opacity var(--crypt-d-transition-main);
+}
+
+.wrapper:hover .copy-btn {
+  opacity: 1;
+  pointer-events: auto;
+  user-select: auto;
+}
+
+.wrapper:hover.wrapper_copied .copy-btn {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.copied {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  padding: 4px;
+  border-radius: 2px;
+  background-color: var(--crypt-c-success-bg);
+  color: var(--crypt-c-success-text);
+  font-family: var(--lmui-ff-marr-sans);
+  transition: opacity var(--crypt-d-transition-main);
+}
+
+.wrapper.wrapper_copied .copied {
+  opacity: 1;
+  pointer-events: auto;
+  user-select: auto;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}

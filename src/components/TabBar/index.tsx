@@ -1,5 +1,6 @@
 import { Component, VNode } from 'preact'
 import styles from './styles.module.scss'
+import Separator from 'components/Separator'
 
 export type TabData = {
   content: VNode | string
@@ -27,16 +28,21 @@ export default class TabBar extends Component<Props> {
   render () {
     const { props } = this
     return <div className={styles['wrapper']}>
-      {props.tabs?.map(tabData => {
-        const isActive = props.activeTab === tabData.value
-        const tabClasses = [styles['tab']]
-        if (isActive) tabClasses.push(styles['tab_active'])
-        return <div
-          className={tabClasses.join(' ')}
-          onClick={() => this.handleClick(tabData.value)}>
-          {tabData.content}
-        </div>
-      })}
+      <div className={styles['tabs']}>
+        {props.tabs?.map(tabData => {
+          const isActive = props.activeTab === tabData.value
+          const tabClasses = [styles['tab']]
+          if (isActive) tabClasses.push(styles['tab_active'])
+          return <div
+            className={tabClasses.join(' ')}
+            onClick={() => this.handleClick(tabData.value)}>
+            {tabData.content}
+          </div>
+        })}
+      </div>
+      <div className={styles['separator']}>
+        <Separator />
+      </div>
     </div>
   }
 }

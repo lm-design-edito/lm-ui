@@ -5,13 +5,18 @@
   overflow: hidden;
 }
 
-.component-slot {
+.display-slot {
   width: 100%;
   background-color: var(--crypt-c-elevation-1);
+}
+
+.display-slot__slide {
   padding: var(--lm-texts-scale-level-20);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.display-slot__slide.display-slot__slide_html,
+.display-slot__slide.display-slot__slide_dkdll {
+  font-size: var(--lm-texts-scale-level-2);
 }
 
 .toggle-settings-slot {
@@ -40,6 +45,10 @@
   filter: invert(1);
 }
 
+.toggle-settings__label {
+  transition: all 0ms;
+}
+
 .separator-slot {
   display: none;
   padding: 0 var(--lm-texts-scale-level-10);
@@ -51,4 +60,11 @@
 
 .settings-slot {
   padding: var(--lm-texts-scale-level-10);
+}
+
+.rounded-wrapper {
+  padding: var(--lm-texts-scale-level-20);
+  border-radius: 8px;
+  background-color: var(--crypt-c-article-bg);
+  box-shadow: var(--crypt-bsh-small);
 }

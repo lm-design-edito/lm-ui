@@ -1,0 +1,27 @@
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+  flex-wrap: nowrap;
+  width: var(--slides-width);
+  margin-left: var(--slides-offset);
+  transition: margin-left var(--crypt-d-transition-main);
+}
+
+.slide {
+  width: var(--slide-width);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity var(--crypt-d-transition-main);
+}
+
+.slide.slide_active {
+  opacity: 1;
+  transition: opacity var(--crypt-d-transition-main) calc(var(--crypt-d-transition-main) / 2);
+}

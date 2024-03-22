@@ -1,7 +1,6 @@
-import { Component, render } from 'preact'
-import format from 'html-format'
+import { Component } from 'preact'
 import Button, { Props as ButtonProps } from '@design-edito/new-app/components/UI/components/Button'
-import { JsonEditor, Value as JsonValue, Scheme } from 'components/JsonEditor'
+import { Value as JsonValue, Scheme } from 'components/JsonEditor'
 import CompPresentationText from 'components/CompPresentationText'
 import CompEditor from 'components/CompEditor'
 
@@ -12,9 +11,9 @@ export const thumb = <Button content="En savoir plus" />
 const buttonInitProps = {
   content: 'En savoir plus',
   size: 'medium',
-  disabled: false,
-  squared: false,
   secondary: false,
+  squared: false,
+  disabled: false,
   iconFirst: false
 } as ButtonProps
 
@@ -25,56 +24,34 @@ const buttonPropsScheme: Scheme.Scheme = {
     properties: {
       customClass: { scheme: { fallback: 'my-custom-class', string: true }, optional: true },
       content: { scheme: { fallback: 'En savoir plus', string: true }, optional: true },
-      iconContent: { scheme: { fallback: '', string: true }, optional: true },
       size: { scheme: { fallback: 'medium', string: { rule: ['small', 'medium', 'large'] } } },
-      disabled: { scheme: { fallback: false, boolean: true } },
-      squared: { scheme: { fallback: false, boolean: true } },
       secondary: { scheme: { fallback: false, boolean: true } },
+      squared: { scheme: { fallback: false, boolean: true } },
+      disabled: { scheme: { fallback: false, boolean: true } },
+      iconContent: { scheme: { fallback: '', string: true }, optional: true },
       iconFirst: { scheme: { fallback: false, boolean: true } }
     }
   }
 }
 
 type Props = {}
-type State = {
-  buttonProps: ButtonProps,
-  buttonHtml?: string
+
+function buttonPropsToDkdll (props: ButtonProps): string {
+  let output = `<comp name="button">`
+  if (props.customClass !== undefined) output += `\n  <string class="customClass">${props.customClass}</string>`
+  if (props.content !== undefined) output +=     `\n  <lm-html class="content">${props.content}</lm-html>`
+  if (props.size !== undefined) output +=        `\n  <string class="size">${props.size}</string>`
+  if (props.secondary !== undefined) output +=   `\n  <boolean class="secondary">${props.secondary}</boolean>`
+  if (props.squared !== undefined) output +=     `\n  <boolean class="squared">${props.squared}</boolean>`
+  if (props.disabled !== undefined) output +=    `\n  <boolean class="disabled">${props.disabled}</boolean>`
+  if (props.iconContent !== undefined) output += `\n  <lm-html class="iconContent">${props.iconContent}</lm-html>`
+  if (props.iconFirst !== undefined) output +=   `\n  <boolean class="iconFirst">${props.iconFirst}</boolean>`
+  output += `\n</comp>`
+  return output
 }
 
-export const Content = class ButtonPage extends Component<Props, State> {
-  $buttonWrapper: HTMLDivElement | null = null
-  state: State = {
-    buttonProps: buttonInitProps,
-    buttonHtml: undefined
-  }
-
-  constructor (props: Props) {
-    super(props)
-    this.syncButtonDomAfterRender = this.syncButtonDomAfterRender.bind(this)
-  }
-
-  componentDidMount (): void {
-    this.syncButtonDomAfterRender()
-  }
-
-  componentDidUpdate (): void {
-    this.syncButtonDomAfterRender()
-  }
-
-  syncButtonDomAfterRender () {
-    const { $buttonWrapper } = this
-    if ($buttonWrapper === null) return;
-    const buttonHtml = $buttonWrapper.innerHTML
-    this.setState(curr => {
-      if (curr.buttonHtml === buttonHtml) return null;
-      return { ...curr, buttonHtml }
-    })
-  }
-
+export const Content = class ButtonPage extends Component<Props> {
   render () {
-    const { state } = this
-    const tempContainer = document.createElement('div')
-    render(<Button {...state.buttonProps} />, tempContainer)
     return <div>
       <CompPresentationText>
         I am a simple button.
@@ -83,10 +60,8 @@ export const Content = class ButtonPage extends Component<Props, State> {
         component={Button}
         initialProps={buttonInitProps}
         scheme={buttonPropsScheme}
-        onChange={val => this.setState({ buttonProps: val })} />
-      <pre>
-        {format(tempContainer.innerHTML)}
-      </pre>
+        onChange={val => this.setState({ buttonProps: val })}
+        propsToDkdll={buttonPropsToDkdll} />
     </div>
   }
 }

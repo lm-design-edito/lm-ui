@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.17",
+    "@types/prismjs": "^1.26.3",
     "chokidar": "^3.6.0",
     "esbuild": "^0.20.0",
     "esbuild-plugin-inline-image": "^0.0.9",
@@ -36,7 +37,9 @@
   },
   "dependencies": {
     "@design-edito/new-app": "^1.0.0-delta.2",
+    "highlight.js": "^11.9.0",
     "html-format": "^1.1.6",
-    "preact": "^10.19.4"
+    "preact": "^10.19.4",
+    "prismjs": "^1.29.0"
   }
 }

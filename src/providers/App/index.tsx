@@ -1,12 +1,13 @@
 import { Component } from 'preact'
-import styles from './styles.module.scss'
 import getBrowserDefaultScrollbarWidth from 'utils/get-browser-default-scrollbar-width'
-import { Page } from 'pages'
 import AppContext, { defaultContext } from 'providers/context'
-import Header from 'components/Header'
-import ColorModeToggler from 'components/ColorModeToggler'
 import Home from 'consumers/Home'
 import SidePanel from 'consumers/SidePanel'
+import { Page } from 'pages'
+import Header from 'components/Header'
+import ColorModeToggler from 'components/ColorModeToggler'
+import styles from './styles.module.scss'
+import './styles.scss'
 
 const defaultScrollBarWidth = getBrowserDefaultScrollbarWidth()
 

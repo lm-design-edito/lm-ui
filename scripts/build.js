@@ -25,6 +25,10 @@ const buildOptions = {
             filter: /\.module\.scss$/,
             type: 'css',
             transform: postcssModules({})
+        }),
+        sassPlugin({
+            filter: /.scss$/,
+            type: 'css',
         })
     ]
 };

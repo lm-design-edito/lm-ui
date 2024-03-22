@@ -52,7 +52,6 @@ export default class Drawer extends Component<Props, State> {
     }
     const wrapperClasses = [styles['wrapper']]
     if (props.opened) wrapperClasses.push(styles['wrapper_opened'])
-    console.log(wrapperClasses)
     return <div
       style={wrapperStyle}
       className={wrapperClasses.join(' ')}>

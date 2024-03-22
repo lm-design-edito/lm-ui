@@ -7,15 +7,26 @@
 
 .head-slot {
   position: fixed;
+  z-index: 2;
 }
 
 .cover-slot {
+  position: relative;
+  z-index: 1;
   aspect-ratio: 2;
   background-color: var(--crypt-c-elevation-1);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--lm-texts-scale-level-28);
+}
+
+.cover-slot-no-click-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .content-slot {

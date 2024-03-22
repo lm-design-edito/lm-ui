@@ -1,0 +1,195 @@
+/* * * * * * * * * * * * * * * * * * * * *
+ *
+ * GENERICS
+ *
+ * * * * * * * * * * * * * * * * * * * * */
+
+:where(*) {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * *
+ *
+ * THEME
+ *
+ * * * * * * * * * * * * * * * * * * * * */
+
+:root {
+  /* Durations */
+  --crypt-d-transition-main: 400ms;
+
+  /* Colors */
+  --crypt-c-article-bg: white;
+  --crypt-c-elevation-1: #FAFAFA;
+  --crypt-c-elevation-2: #F2F2F2;
+  --crypt-c-main-borders: #DDDDDD;
+  --crypt-c-opacifier-bg: rgb(0, 0, 0, .8);
+  --crypt-c-default-texts: #101010;
+  --crypt-c-half-light-text: rgb(16, 16, 16, .75);
+  --crypt-c-light-text: rgb(16, 16, 16, .55);
+  --crypt-c-success-bg: rgb(51, 144, 94);
+  --crypt-c-success-text: white;
+  /* Shadows */
+  --crypt-bsh-big: 0 0 40px 0 rgb(0, 0, 0, .3);
+  --crypt-bsh-medium: 0 0 20px 0 rgb(0, 0, 0, .2);
+  --crypt-bsh-small: 0 0 12px 0 rgb(0, 0, 0, .15);
+
+  [data-color-mode="dark"] {
+    /* Colors */
+    --crypt-c-article-bg: #101010;
+    --crypt-c-elevation-1: #202020;
+    --crypt-c-elevation-2: #303030;
+    --crypt-c-main-borders: #333333;
+    --crypt-c-opacifier-bg: rgb(24, 24, 24, .85);
+    --crypt-c-default-texts: #FAFAFA;
+    --crypt-c-half-light-text: rgb(250, 250, 250, .78);
+    --crypt-c-light-text: rgb(250, 250, 250, .6);
+    --crypt-c-success-bg: rgb(51, 144, 94);
+    --crypt-c-success-text: white;
+    /* Shadows */
+    --crypt-bsh-big: 0 0 40px 0 rgb(0, 0, 0, .7);
+    --crypt-bsh-medium: 0 0 20px 0 rgb(0, 0, 0, .8);
+    --crypt-bsh-small: 0 0 12px 0 rgb(0, 0, 0, .8);
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * *
+ *
+ * JSON EDITOR
+ *
+ * * * * * * * * * * * * * * * * * * * * */
+
+.json-editor, .json-editor * {
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.json-editor select,
+.json-editor input,
+.json-editor button {
+  padding: 0;
+  margin: 0;
+  height: 24px;
+}
+
+/* Boolean */
+
+.json-editor .boolean-value-editor {
+  width: 16px;
+  height: 16px;
+  transform: translateY(2px);
+}
+
+.json-editor .boolean-value-editor::after {
+  content: "false";
+  color: crimson;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+.json-editor .boolean-value-editor:checked:after {
+  content: "true";
+  color: forestgreen;
+}
+
+/* String */
+
+.json-editor .string-value-editor.string-value-editor_input {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+/* Object */
+
+.json-editor .object-value-editor__opening-brace,
+.json-editor .object-value-editor__closing-brace {
+  color: var(--crypt-c-default-texts);
+}
+
+.json-editor .object-value-editor__properties {
+  padding: 8px 0;
+}
+
+.json-editor .object-value-editor__property {
+  margin: 4px 0;
+}
+
+.json-editor .object-value-editor__create-optional-property,
+.json-editor .object-value-editor__create-property {
+  margin: 4px 0;
+}
+
+.json-editor .object-value-editor__property + .object-value-editor__create-optional-property,
+.json-editor .object-value-editor__property + .object-value-editor__create-property {
+  margin-top: 12px;
+}
+
+.json-editor .object-value-editor__create-optional-property {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--crypt-c-default-texts);
+}
+
+.json-editor .object-value-editor__delete-property {
+  position: relative;
+  margin-right: 4px;
+  border: 1px solid #222;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  color: transparent;
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+.json-editor .object-value-editor__delete-property::after {
+  content: "x";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #222;
+}
+
+.json-editor .object-value-editor__delete-property:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+.json-editor .object-value-editor__property-name {
+  margin-right: 4px;
+}
+
+.json-editor .value-editor .type-editor {
+  margin-right: 4px;
+}
+
+.json-editor .value-editor .type-editor:disabled {
+  border-color: transparent;
+}
+
+.json-editor .object-value-editor__properties,
+.json-editor .array-value-editor__properties {
+  padding-left: 40px;
+}
+
+.json-editor .object-value-editor__create-property:disabled {
+  display: none;
+}
+
+.json-editor .object-value-editor__create-optional-property {
+  display: block;
+}

@@ -256,6 +256,7 @@ export namespace Scheme {
       preventPropertiesShift?: boolean
       minLength?: number
       maxLength?: number
+      // [WIP] anyValue?: { scheme: Scheme } ?
       values?: Array<{
         optional?: boolean
         scheme?: Scheme
@@ -266,6 +267,7 @@ export namespace Scheme {
     object?: true | {
       preventPropertyCreation?: boolean
       preventPropertyDeletion?: boolean
+      // [WIP] anyProperty?: { scheme: Scheme } ?
       properties?: {
         [key: string]: {
           optional?: boolean

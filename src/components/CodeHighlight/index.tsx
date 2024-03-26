@@ -1,6 +1,5 @@
 import { Component, VNode, render } from 'preact'
 import prism from 'prismjs'
-import format from 'html-format'
 import styles from './styles.module.scss'
 import './styles.scss'
 
@@ -22,14 +21,11 @@ export default class CodeHighlight extends Component<Props> {
       render(<>{props.toHighlight}</>, fakeDiv)
     }
     let formatted = fakeDiv.innerHTML
-    console.log(formatted)
-    // if (props.language === 'html') { formatted = format(formatted) }
     const highlighted = prism.highlight(
       formatted,
       props.grammar,
       props.language
     )
-    console.log(highlighted)
     return <pre>
       <code
         className={styles['wrapper']}

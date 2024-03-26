@@ -13,7 +13,7 @@
   --lmui-c-main-tab-bg-hover: var(--lmui-c-snow-darker);
   --lmui-c-main-tab-label-hover: var(--lmui-c-slate-darker);
   --lmui-c-main-tab-bg-active: var(--lmui-c-smoke-lighter);
-  --lmui-c-main-tab-label-active: var(--lmui-slate-darker);
+  --lmui-c-main-tab-label-active: var(--lmui-c-slate-darker);
   --lmui-c-main-tab-bg-disabled: var(--lmui-c-snow-medium);
   --lmui-c-main-tab-label-disabled: var(--lmui-c-smoke-light);
   --lmui-c-main-tab-bg-enabled: var(--lmui-c-white);
@@ -53,7 +53,6 @@
   align-items: center;
   justify-content: center;
   padding: 0px 14px;
-  width: 100%;
   height: calc(var(--lmui-len-tab-width-large) - var(--lmui-len-tab-padding-large));
   font-family: var(--lmui-ff-marr-sans);
   font-weight: 500;
@@ -61,6 +60,7 @@
   color: var(--lmui-c-main-tab-label);
   cursor: pointer;
   transition: 0.45s var(--lmui-tfunc-ease-out-quint);
+  border: transparent;
   border-radius: 100px;
   background: var(--lmui-c-main-tab-bg);
 
@@ -87,7 +87,7 @@
   pointer-events: none;
 }
 
-.lmui-tab.lmui-tab_enabled {
+.lmui-tab.lmui-tab_active {
   color: var(--lmui-c-main-tab-label-enabled);
   background: var(--lmui-c-main-tab-bg-enabled);
   box-shadow: var(--lmui-c-main-tab-enabled-box-shadow);
@@ -106,7 +106,7 @@
   transform: scale(0.85);
 }
 
-.lmui-tab.lmui-tab_enabled .lmui-tab__icon .lmui-icon {
+.lmui-tab.lmui-tab_active .lmui-tab__icon .lmui-icon {
   filter: var(--lmui-ic-black);
 }
 

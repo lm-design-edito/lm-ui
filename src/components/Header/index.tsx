@@ -7,7 +7,7 @@ export default class Header extends Component {
     return <div className={styles['wrapper']}>
       <div className={styles['logo-slot']}>
         <img className={styles['logo']} src={logoBase64Data} />
-        <span className={styles['crypt']}>La crypte</span>
+        <span className={styles['crypt']}>La Crypte</span>
         <div className={styles['separator']}></div>
       </div>
     </div>

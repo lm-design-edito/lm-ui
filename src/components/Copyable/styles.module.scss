@@ -6,8 +6,8 @@
 .copy-btn {
   position: absolute;
   z-index: 2;
-  top: 0;
-  right: 0;
+  top: 4px;
+  right: 4px;
   opacity: 0;
   pointer-events: none;
   user-select: none;
@@ -32,8 +32,8 @@
 .copied {
   position: absolute;
   z-index: 2;
-  top: 0;
-  right: 0;
+  top: 4px;
+  right: 4px;
   opacity: 0;
   pointer-events: none;
   user-select: none;
@@ -54,4 +54,9 @@
 .content {
   position: relative;
   z-index: 1;
+  transition: opacity var(--crypt-d-transition-main);
+}
+
+.wrapper.wrapper_copied .content {
+  opacity: .4;
 }

@@ -21,7 +21,7 @@ export default class Drawer extends Component<Props, State> {
 
   componentDidMount(): void {
     this.getInnerTargetHeight()
-    this.getInnerTargetHeightInterval = window.setInterval(this.getInnerTargetHeight, 50)
+    this.getInnerTargetHeightInterval = window.setInterval(this.getInnerTargetHeight, 500)
   }
   
   componentDidUpdate(): void {
@@ -35,21 +35,18 @@ export default class Drawer extends Component<Props, State> {
     this.getInnerTargetHeightInterval = null
   }
 
-  getInnerTargetHeight () {
-    const { $inner } = this
+  async getInnerTargetHeight () {
+    const { $inner, state } = this
     if ($inner === null) return;
     const { height } = $inner.getBoundingClientRect()
-    this.setState(curr => {
-      if (curr.targetHeight === height) return null
-      return { ...curr, targetHeight: height }
-    })
+    if (state.targetHeight === height) return;
+    // [WIP] setState does not seem to be triggered every time without the setTimeout trick
+    window.setTimeout(() => this.setState({ targetHeight: height }), 0)
   }
 
   render () {
     const { props, state } = this
-    const wrapperStyle = {
-      ['--target-height']: `${state.targetHeight ?? 0}px`
-    }
+    const wrapperStyle = { ['--target-height']: `${state.targetHeight ?? 0}px` }
     const wrapperClasses = [styles['wrapper']]
     if (props.opened) wrapperClasses.push(styles['wrapper_opened'])
     return <div

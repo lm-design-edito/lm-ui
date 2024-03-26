@@ -1,25 +1,26 @@
-import { Component, ComponentProps, ComponentType, JSX, render } from 'preact'
+import { Component, ComponentType, render } from 'preact'
 import format from 'html-format'
 import prism from 'prismjs'
+import 'prismjs/components/prism-pug'
 import { JsonEditor, Scheme, Value as JsonValue } from 'components/JsonEditor'
 import Drawer from 'components/Drawer'
 import Separator from 'components/Separator'
 import TabBar, { TabData } from 'components/TabBar'
 import HorizontalSlider from 'components/HorizontalSlider'
-import styles from './styles.module.scss'
-import settingsIconBase64Data from './settings.svg'
-import closeIconBase64Data from './close.svg'
 import CodeHighlight from 'components/CodeHighlight'
 import Copyable from 'components/Copyable'
-
-type PropsOf<C extends ComponentType<any>> = JSX.LibraryManagedAttributes<C, ComponentProps<C>>
+import htmlFormat from 'utils/html-format'
+import { PropsOf } from 'utils/typescript-utilities'
+import settingsIconBase64Data from './settings.svg'
+import closeIconBase64Data from './close.svg'
+import styles from './styles.module.scss'
 
 type Props<C extends ComponentType<any>> = {
   component: C
   initialProps: PropsOf<C>
   scheme: Scheme.Scheme
-  onChange?: (newVal: PropsOf<C>) => void
-  propsToDkdll?: (props: PropsOf<C>) => string
+  schemeOutputToProps: (output: JsonValue) => PropsOf<C>
+  propsToDkdll: (props: PropsOf<C>) => string
 }
 
 type State<C extends ComponentType<any>> = {
@@ -43,8 +44,6 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
   }
 
   handleCompPropsChange (val: JsonValue) {
-    const { onChange } = this.props
-    if (onChange !== undefined) onChange(val as PropsOf<C>)
     this.setState(curr => ({
       ...curr,
       componentProps: val as PropsOf<C>
@@ -64,7 +63,8 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
 
   get child () {
     const { props, state } = this
-    return <props.component {...state.componentProps} />
+    const actualProps = props.schemeOutputToProps(state.componentProps)
+    return <props.component {...actualProps} />
   }
 
   getChildOuterHTML () {
@@ -92,7 +92,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     ]
 
     const htmlTabContent = getChildOuterHTML()
-    const dkdllTabContent = props.propsToDkdll?.(state.componentProps) ?? 'Nothing here'
+    const dkdllTabContent = props.propsToDkdll(state.componentProps)
 
     const wrapperClasses = [styles['wrapper']]
     if (state.drawerOpened) wrapperClasses.push(styles['wrapper_opened'])
@@ -100,6 +100,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     const viewSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_view']]
     const htmlSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_html']]
     const dkdllSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_dkdll']]
+    const pgdllSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_pgdll']]
 
     return <div className={wrapperClasses.join(' ')}>
       {/* Tabs */}
@@ -123,7 +124,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
               <Copyable copy={htmlTabContent}>
                 <div className={styles['rounded-wrapper']}>
                   <CodeHighlight
-                    toHighlight={htmlTabContent}
+                    toHighlight={htmlFormat(htmlTabContent)}
                     grammar={prism.languages.html as Prism.Grammar}
                     language='html' />
                 </div>
@@ -135,7 +136,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
               <Copyable copy={dkdllTabContent}>
                 <div className={styles['rounded-wrapper']}>
                   <CodeHighlight
-                    toHighlight={dkdllTabContent}
+                    toHighlight={htmlFormat(dkdllTabContent)}
                     grammar={prism.languages.html as Prism.Grammar}
                     language='html' />
                 </div>

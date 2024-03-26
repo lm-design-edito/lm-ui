@@ -66,14 +66,12 @@
   transition: background-color 0.25s ease-in;
 }
 
-/* Hover State */
-
+// Hover State
 .lmui-radio__input + .lmui-radio__fake:hover::before {
   background: var(--lmui-c-main-radio-bg-hover);
 }
 
-/* Disabled State */
-
+// Disabled State
 .lmui-radio__input:disabled + .lmui-radio__fake::before {
   content: "";
   position: absolute;
@@ -87,11 +85,10 @@
   pointer-events: none;
 }
 
-/* Checked State */
-
+// Checked State
 .lmui-radio__input:checked + .lmui-radio__fake::before {
   transition: background-color 0.25s ease-in, border 0.25s ease-in;
-  border: 1px solid var(--lmui-c-main-radio-border-enabled);
+  border: 1px solid var(--lmui-c-main-radio-border-checked);
 }
 
 .lmui-radio__input:checked + .lmui-radio__fake::after {
@@ -105,8 +102,7 @@
   height: 8px;
 }
 
-/* Error State */
-
+// Error State
 .lmui-radio.lmui-radio_error .lmui-radio__input + .lmui-radio__fake::before {
   border: 1px solid var(--lmui-c-main-radio-border-error);
 }

@@ -107,41 +107,19 @@ html, body {
   padding-right: 4px;
 }
 
-/* Object */
+/* Array & Object */
 
 .json-editor .object-value-editor__opening-brace,
-.json-editor .object-value-editor__closing-brace {
+.json-editor .object-value-editor__closing-brace,
+.json-editor .array-value-editor__opening-bracket,
+.json-editor .array-value-editor__closing-bracket {
   color: var(--crypt-c-default-texts);
 }
 
-.json-editor .object-value-editor__properties {
-  padding: 8px 0;
-}
-
-.json-editor .object-value-editor__property {
-  margin: 4px 0;
-}
-
-.json-editor .object-value-editor__create-optional-property,
-.json-editor .object-value-editor__create-property {
-  margin: 4px 0;
-}
-
-.json-editor .object-value-editor__property + .object-value-editor__create-optional-property,
-.json-editor .object-value-editor__property + .object-value-editor__create-property {
-  margin-top: 12px;
-}
-
-.json-editor .object-value-editor__create-optional-property {
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  text-decoration: underline;
-  cursor: pointer;
-  color: var(--crypt-c-default-texts);
-}
-
-.json-editor .object-value-editor__delete-property {
+.json-editor .object-value-editor__delete-property,
+.json-editor .array-value-editor__delete-property,
+.json-editor .array-value-editor__lift-property,
+.json-editor .array-value-editor__drop-property {
   position: relative;
   margin-right: 4px;
   border: 1px solid #222;
@@ -154,7 +132,10 @@ html, body {
   transform: translateY(-5px);
 }
 
-.json-editor .object-value-editor__delete-property::after {
+.json-editor .object-value-editor__delete-property::after,
+.json-editor .array-value-editor__delete-property::after,
+.json-editor .array-value-editor__lift-property::after,
+.json-editor .array-value-editor__drop-property::after {
   content: "x";
   position: absolute;
   top: 50%;
@@ -164,9 +145,90 @@ html, body {
   color: #222;
 }
 
-.json-editor .object-value-editor__delete-property:disabled {
+.json-editor .array-value-editor__lift-property::after {
+  content: "↑";
+}
+
+.json-editor .array-value-editor__drop-property::after {
+  content: "↓";
+}
+
+.json-editor .object-value-editor__delete-property:disabled,
+.json-editor .array-value-editor__delete-property:disabled,
+.json-editor .array-value-editor__lift-property:disabled,
+.json-editor .array-value-editor__drop-property:disabled {
   opacity: .4;
   cursor: default;
+}
+
+.json-editor .object-value-editor__create-optional-property,
+.json-editor .object-value-editor__create-property,
+.json-editor .array-value-editor__create-property {
+  margin: 4px 0;
+}
+
+.json-editor .object-value-editor__property + .object-value-editor__create-optional-property,
+.json-editor .object-value-editor__property + .object-value-editor__create-property,
+.json-editor .array-value-editor__property + .array-value-editor__create-property {
+  margin-top: 12px;
+}
+
+.json-editor .object-value-editor__create-optional-property,
+.json-editor .object-value-editor__create-property,
+.json-editor .array-value-editor__create-property {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--crypt-c-default-texts);
+}
+
+.json-editor .object-value-editor__create-property:disabled,
+.json-editor .array-value-editor__create-property:disabled {
+  display: none;
+}
+
+.json-editor .object-value-editor__properties,
+.json-editor .array-value-editor__properties {
+  padding: 8px 0 8px 40px;
+}
+
+/* Array */
+
+.json-editor .array-value-editor__create-property {
+  font-size: 0;
+  text-decoration: none;
+}
+
+.json-editor .array-value-editor__create-property::before {
+  content: "+ Add item";
+  font-size: 16px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Object */
+
+.json-editor .object-value-editor__property {
+  margin: 4px 0;
+}
+
+.json-editor .object-value-editor__create-optional-property {
+  display: block;
+  font-style: italic;
+}
+
+.json-editor .object-value-editor__create-property {
+  font-size: 0;
+  text-decoration: none;
+}
+
+.json-editor .object-value-editor__create-property::before {
+  content: "+ Add property";
+  font-size: 16px;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 .json-editor .object-value-editor__property-name {
@@ -179,17 +241,4 @@ html, body {
 
 .json-editor .value-editor .type-editor:disabled {
   border-color: transparent;
-}
-
-.json-editor .object-value-editor__properties,
-.json-editor .array-value-editor__properties {
-  padding-left: 40px;
-}
-
-.json-editor .object-value-editor__create-property:disabled {
-  display: none;
-}
-
-.json-editor .object-value-editor__create-optional-property {
-  display: block;
 }

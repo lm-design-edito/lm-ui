@@ -26,11 +26,11 @@
   --lmui-c-main-checkbox-border-error: var(--lmui-c-red-light);
 }
 
-/* * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  *
  * STYLES
  *
- * * * * * * * * * * * * * * * * * * * * * */
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 .lmui-checkbox {
   position: relative;
@@ -43,7 +43,7 @@
   display: none;
 }
 
-.lmui-checkbox__input+.lmui-checkbox__fake {
+.lmui-checkbox__input + .lmui-checkbox__fake {
   position: relative;
   padding-left: 30px;
   font-family: var(--lmui-ff-marr-sans);
@@ -66,14 +66,12 @@
   transition: background-color 0.25s ease-in;
 }
 
-/* Hover State */
-
+// Hover State
 .lmui-checkbox__input + .lmui-checkbox__fake:hover::before {
   background: var(--lmui-c-main-checkbox-bg-hover);
 }
 
-/* Disabled State */
-
+// Disabled State
 .lmui-checkbox__input:disabled + .lmui-checkbox__fake::before {
   content: "";
   position: absolute;
@@ -87,8 +85,7 @@
   pointer-events: none;
 }
 
-/* Checked State */
-
+// Checked State
 .lmui-checkbox__input:checked + .lmui-checkbox__fake::before {
   background: var(--lmui-c-main-checkbox-bg);
   transition: background-color 0.25s ease-in;
@@ -106,8 +103,7 @@
   height: 12px;
 }
 
-/* Error State */
-
+// Error State
 .lmui-checkbox.lmui-checkbox_error .lmui-checkbox__input + .lmui-checkbox__fake::before {
   border: 1px solid var(--lmui-c-main-checkbox-border-error);
 }

@@ -4,9 +4,9 @@ import CompPage from 'components/CompPage'
 export const id = 'checkbox'
 export const name = 'Checkbox & radio'
 export const thumb = <div>
-  <CheckboxOrRadio type="checkbox" labelContent="checkbox" />
+  <CheckboxOrRadio type="checkbox" labelContent="Checkbox" />
   <div style={{ height: 16 }} />
-  <CheckboxOrRadio type="radio" labelContent="radio" />
+  <CheckboxOrRadio type="radio" labelContent="Radio button" />
 </div>
 
 export const Content = () => <CompPage
@@ -32,10 +32,10 @@ export const Content = () => <CompPage
   propsToDkdll={(props: CheckboxOrRadioProps) => {
     let output = `<comp name="ui">`
     output += `\n  <string class="component">${props.type}</string>`
-    if (props.customClass !== undefined) output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>`
-    if (props.labelContent !== undefined) output += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>`
-    if (props.disabled !== undefined) output += `\n  <boolean class="disabled">${props.disabled}</boolean>`
-    if (props.error !== undefined) output += `\n  <boolean class="error">${props.error}</boolean>`
+    if (props.customClass !== undefined)  { output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
+    if (props.labelContent !== undefined) { output += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>` }
+    if (props.disabled !== undefined)     { output += `\n  <boolean class="disabled">${props.disabled}</boolean>` }
+    if (props.error !== undefined)        { output += `\n  <boolean class="error">${props.error}</boolean>` }
     output += `\n</comp>`
     return output
   }} />

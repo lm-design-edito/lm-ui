@@ -29,10 +29,10 @@ export const Content = () => <CompPage
   propsToDkdll={(props: ToggleProps) => {
     let output = `<comp name="ui">`
     output += `\n  <string class="component">toggle</string>`
-    if (props.customClass !== undefined) output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>`
-    if (props.labelContent !== undefined) output += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>`
-    if (props.size !== undefined) output += `\n  <string class="size">${props.size.replaceAll('\n', ' ')}</string>`
-    if (props.defaultChecked !== undefined) output += `\n  <boolean class="defaultChecked">${props.defaultChecked}</boolean>`
+    if (props.customClass !== undefined)    { output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
+    if (props.labelContent !== undefined)   { output += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>` }
+    if (props.size !== undefined)           { output += `\n  <string class="size">${props.size.replaceAll('\n', ' ')}</string>` }
+    if (props.defaultChecked !== undefined) { output += `\n  <boolean class="defaultChecked">${props.defaultChecked}</boolean>` }
     output += `\n</comp>`
     return output
   }} />

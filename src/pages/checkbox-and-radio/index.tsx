@@ -28,14 +28,14 @@ export const Content = () => <CompPage
       }
     }
   }}
-  schemeOutputToProps={output => output as CheckboxOrRadioProps}
-  propsToDkdll={(props: CheckboxOrRadioProps) => {
-    let output = `<comp name="ui">`
-    output += `\n  <string class="component">${props.type}</string>`
-    if (props.customClass !== undefined)  { output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
-    if (props.labelContent !== undefined) { output += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>` }
-    if (props.disabled !== undefined)     { output += `\n  <boolean class="disabled">${props.disabled}</boolean>` }
-    if (props.error !== undefined)        { output += `\n  <boolean class="error">${props.error}</boolean>` }
-    output += `\n</comp>`
-    return output
+  schemeTransform={schemeOutput => {
+    const props = schemeOutput as CheckboxOrRadioProps
+    let dkdll = `<comp name="ui">`
+    dkdll += `\n  <string class="component">${props.type}</string>`
+    if (props.customClass !== undefined)  { dkdll += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
+    if (props.labelContent !== undefined) { dkdll += `\n  <string class="labelContent">${`${props.labelContent}`.replaceAll('\n', ' ')}</string>` }
+    if (props.disabled !== undefined)     { dkdll += `\n  <boolean class="disabled">${props.disabled}</boolean>` }
+    if (props.error !== undefined)        { dkdll += `\n  <boolean class="error">${props.error}</boolean>` }
+    dkdll += `\n</comp>`
+    return { props, dkdll }
   }} />

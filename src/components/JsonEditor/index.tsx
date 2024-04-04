@@ -369,16 +369,16 @@ export namespace Scheme {
         rule = (input: ArrayValue) => makeValidationSuccess(input, input),
         fallback
       } = scheme.array
-      if (testFallback && scheme.array.fallback !== undefined) {
-        const fallbackTest = test(scheme.array.fallback, scheme, path, false)
+      if (testFallback && fallback !== undefined) {
+        const fallbackTest = test(fallback, scheme, path, false)
         const someResultsAreBad = fallbackTest.some(result => result.result.success === false)
         if (someResultsAreBad) throw new Error(`provided array fallback in scheme doesn\'t comply to scheme at path /${path.join('/')}`)
       }
-      if (input.length < minLength) return [{ path, result: makeValidationFailure(fallback ?? scheme.fallback, input, 'array length should be at least of ${minLength}') }]
-      if (input.length > maxLength) return [{ path, result: makeValidationFailure(fallback ?? scheme.fallback, input, 'array length should be at most of ${maxLength}') }]
-      const ruleWithFallback = scheme.array.rule !== undefined
+      if (input.length < minLength) return [{ path, result: makeValidationFailure(fallback ?? scheme.fallback, input, `array length should be at least of ${minLength}`) }]
+      if (input.length > maxLength) return [{ path, result: makeValidationFailure(fallback ?? scheme.fallback, input, `array length should be at most of ${maxLength}`) }]
+      const ruleWithFallback = rule !== undefined
         ? {
-          rule: scheme.array.rule as ValidationRule<Value>,
+          rule: rule as ValidationRule<Value>,
           fallback: fallback ?? scheme.fallback as Value
         }
         : undefined
@@ -405,14 +405,14 @@ export namespace Scheme {
         rule = (input: ObjectValue) => makeValidationSuccess(input, input),
         fallback
       } = scheme.object
-      if (testFallback && scheme.object.fallback !== undefined) {
-        const fallbackTest = test(scheme.object.fallback, scheme, path, false)
+      if (testFallback && fallback !== undefined) {
+        const fallbackTest = test(fallback, scheme, path, false)
         const someResultsAreBad = fallbackTest.some(result => result.result.success === false)
         if (someResultsAreBad) throw new Error(`provided object fallback in scheme doesn\'t comply to scheme at path /${path.join('/')}`)
       }
-      const ruleWithFallback = scheme.object.rule !== undefined
+      const ruleWithFallback = rule !== undefined
         ? {
-          rule: scheme.object.rule as ValidationRule<Value>,
+          rule: rule as ValidationRule<Value>,
           fallback: fallback ?? scheme.fallback as Value
         }
         : undefined
@@ -1138,13 +1138,13 @@ export class JsonEditor extends Component<JsonEditorProps, JsonEditorState> {
     const { value } = state
     return <span className='json-editor'>
       <ValueEditor
-      path={[]}
-      value={value}
-      scheme={scheme}
-      onChange={value => {
-        this.setState({ value })
-        if (onChange !== undefined) onChange(value)
-      }} />
+        path={[]}
+        value={value}
+        scheme={scheme}
+        onChange={value => {
+          this.setState({ value })
+          if (onChange !== undefined) onChange(value)
+        }} />
     </span>
   }
 }

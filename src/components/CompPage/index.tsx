@@ -1,15 +1,14 @@
 import { Component, ComponentType } from 'preact'
-import { Scheme, Value as JsonValue } from 'components/JsonEditor'
+import { Scheme } from 'components/JsonEditor'
 import CompPresentationText from 'components/CompPresentationText'
-import CompEditor from 'components/CompEditor'
+import CompEditor, { Props as CompEditorProps } from 'components/CompEditor'
 import { PropsOf } from 'utils/typescript-utilities'
 import styles from './styles.module.scss'
 
 type Props<C extends ComponentType<any>> = {
   childComp: C
   scheme: Scheme.Scheme
-  schemeOutputToProps: (output: JsonValue) => PropsOf<C>
-  propsToDkdll: (props: PropsOf<C>) => string
+  schemeTransform: CompEditorProps<C>['schemeTransform']
 }
 
 export default class CompPage<C extends ComponentType<any>> extends Component<Props<C>> {
@@ -26,8 +25,7 @@ export default class CompPage<C extends ComponentType<any>> extends Component<Pr
           component={props.childComp}
           initialProps={props.scheme.fallback as PropsOf<C>}
           scheme={props.scheme}
-          schemeOutputToProps={props.schemeOutputToProps}
-          propsToDkdll={props.propsToDkdll} />
+          schemeTransform={props.schemeTransform} />
       </div>
     </div>
   }

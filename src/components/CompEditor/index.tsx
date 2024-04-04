@@ -1,7 +1,6 @@
 import { Component, ComponentType, render } from 'preact'
 import format from 'html-format'
 import prism from 'prismjs'
-import 'prismjs/components/prism-pug'
 import { JsonEditor, Scheme, Value as JsonValue } from 'components/JsonEditor'
 import Drawer from 'components/Drawer'
 import Separator from 'components/Separator'
@@ -15,12 +14,16 @@ import settingsIconBase64Data from './settings.svg'
 import closeIconBase64Data from './close.svg'
 import styles from './styles.module.scss'
 
-type Props<C extends ComponentType<any>> = {
+type SchemeTransformationsOutput<C extends ComponentType<any>> = {
+  dkdll: string
+  props: PropsOf<C>
+}
+
+export type Props<C extends ComponentType<any>> = {
   component: C
   initialProps: PropsOf<C>
   scheme: Scheme.Scheme
-  schemeOutputToProps: (output: JsonValue) => PropsOf<C>
-  propsToDkdll: (props: PropsOf<C>) => string
+  schemeTransform: (schemeOutput: JsonValue) => SchemeTransformationsOutput<C>
 }
 
 type State<C extends ComponentType<any>> = {
@@ -40,7 +43,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     this.handleCompPropsChange = this.handleCompPropsChange.bind(this)
     this.handleTabChange = this.handleTabChange.bind(this)
     this.toggleSettingsPanel = this.toggleSettingsPanel.bind(this)
-    this.getChildOuterHTML = this.getChildOuterHTML.bind(this)
+    this.getComputedChildData = this.getComputedChildData.bind(this)
   }
 
   handleCompPropsChange (val: JsonValue) {
@@ -61,17 +64,14 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     }))
   }
 
-  get child () {
-    const { props, state } = this
-    const actualProps = props.schemeOutputToProps(state.componentProps)
-    return <props.component {...actualProps} />
-  }
-
-  getChildOuterHTML () {
-    const { child } = this
+  getComputedChildData () {
+    const { props: thisProps, state } = this
+    const { dkdll, props } = thisProps.schemeTransform(state.componentProps)
     const fakeDiv = document.createElement('div')
+    const child = <thisProps.component {...props} />
     render(child, fakeDiv)
-    return format(fakeDiv.innerHTML)
+    const html = format(fakeDiv.innerHTML)
+    return { child, props, html, dkdll }
   }
 
   render () {
@@ -81,8 +81,7 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
       handleCompPropsChange,
       toggleSettingsPanel,
       handleTabChange,
-      getChildOuterHTML,
-      child
+      getComputedChildData
     } = this
 
     const tabs: TabData[] = [
@@ -91,8 +90,12 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
       { value: 'dkdll', content: <>Darkdouille</> }
     ]
 
-    const htmlTabContent = getChildOuterHTML()
-    const dkdllTabContent = props.propsToDkdll(state.componentProps)
+    const compChildData = getComputedChildData()
+    const {
+      child,
+      html: htmlTabContent,
+      dkdll: dkdllTabContent
+    } = compChildData
 
     const wrapperClasses = [styles['wrapper']]
     if (state.drawerOpened) wrapperClasses.push(styles['wrapper_opened'])
@@ -100,7 +103,6 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     const viewSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_view']]
     const htmlSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_html']]
     const dkdllSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_dkdll']]
-    const pgdllSlideClasses = [styles['display-slot__slide'], styles['display-slot__slide_pgdll']]
 
     return <div className={wrapperClasses.join(' ')}>
       {/* Tabs */}

@@ -60,32 +60,31 @@ export const Content = () => <CompPage
       }
     }
   }}
-  schemeOutputToProps={(output): TabsProps => {
-    if (!isObject(output)) return {}
-    const returned: TabsProps = {}
-    const { customClass, tabs } = output
-    returned.customClass = customClass as string | undefined
-    returned.tabs = (tabs as TabProps[] | undefined)?.map(tabData => <Tab {...tabData} />)
-    return returned
-  }}
-  propsToDkdll={(props: TabsProps) => {
-    let output = `<comp name="ui">`
-    output += `\n  <string class="component">tabs</string>`
-    if (props.customClass !== undefined) output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>`
+  schemeTransform={schemeOutput => {
+    let props: TabsProps = {}
+    if (isObject(schemeOutput)) {
+      const { customClass, tabs } = schemeOutput as TabsProps
+      props.customClass = customClass as string | undefined
+      props.tabs = (tabs as TabProps[] | undefined)?.map(tabData => <Tab {...tabData} />)
+    }
+    let dkdll = `<comp name="ui">`
+    dkdll += `\n  <string class="component">tabs</string>`
+    if (props.customClass !== undefined) dkdll += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>`
     if (props.tabs !== undefined) {
-      output += `\n  <array class="tabs">`
+      dkdll += `\n  <array class="tabs">`
       props.tabs.forEach(_tabData => {
         const tabData = _tabData as TabProps
-        output += `\n    <record>`
-        if (tabData.customClass !== undefined) { output += `\n      <string class="customClass">${tabData.customClass.replaceAll('\n', ' ')}</string>` }
-        if (tabData.active !== undefined)      { output += `\n      <boolean class="active">${tabData.active}</boolean>` }
-        if (tabData.content !== undefined)     { output += `\n      <string class="content">${`${tabData.content}`.replaceAll('\n', ' ')}` }
-        if (tabData.iconContent !== undefined) { output += `\n      <string class="iconContent">${`${tabData.iconContent}`.replaceAll('\n', ' ')}</string>` }
-        if (tabData.iconFirst !== undefined)   { output += `\n      <boolean class="iconFirst">${tabData.iconFirst}</boolean>` }
-        output += `\n    </record>`
+        dkdll += `\n    <record>`
+        if (tabData.customClass !== undefined) { dkdll += `\n      <string class="customClass">${tabData.customClass.replaceAll('\n', ' ')}</string>` }
+        if (tabData.active !== undefined)      { dkdll += `\n      <boolean class="active">${tabData.active}</boolean>` }
+        if (tabData.content !== undefined)     { dkdll += `\n      <string class="content">${`${tabData.content}`.replaceAll('\n', ' ')}` }
+        if (tabData.iconContent !== undefined) { dkdll += `\n      <string class="iconContent">${`${tabData.iconContent}`.replaceAll('\n', ' ')}</string>` }
+        if (tabData.iconFirst !== undefined)   { dkdll += `\n      <boolean class="iconFirst">${tabData.iconFirst}</boolean>` }
+        dkdll += `\n    </record>`
       })
-      output += `\n  </array>`
+      dkdll += `\n  </array>`
     }
-    output += `\n</comp>`
-    return output
+    dkdll += `\n</comp>`
+
+    return { props, dkdll }
   }} />

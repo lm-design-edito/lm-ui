@@ -31,19 +31,26 @@ export const Content = () => <CompPage
       }
     }
   }}
-  schemeOutputToProps={output => output as ButtonProps}
-  propsToDkdll={(props: ButtonProps) => {
-    let output = `<comp name="ui">`
-    output += `\n  <string class="component">button</string>`
-    if (props.customClass !== undefined) { output += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
-    if (props.content !== undefined)     { output += `\n  <lm-html class="content">${`${props.content}`.replaceAll('\n', ' ')}</lm-html>` }
-    if (props.size !== undefined)        { output += `\n  <string class="size">${props.size}</string>` }
-    if (props.secondary !== undefined)   { output += `\n  <boolean class="secondary">${props.secondary}</boolean>` }
-    if (props.squared !== undefined)     { output += `\n  <boolean class="squared">${props.squared}</boolean>` }
-    if (props.disabled !== undefined)    { output += `\n  <boolean class="disabled">${props.disabled}</boolean>` }
-    if (props.iconContent !== undefined) { output += `\n  <lm-html class="iconContent">${`${props.iconContent}`.replaceAll('\n', ' ')}</lm-html>` }
-    if (props.iconFirst !== undefined)   { output += `\n  <boolean class="iconFirst">${props.iconFirst}</boolean>` }
-    // [WIP] onClick
-    output += `\n</comp>`
-    return output
+  schemeTransform={schemeOutput => {
+    const props = schemeOutput as ButtonProps
+    let dkdll = `<comp name="ui">`
+    dkdll += `\n  <string class="component">button</string>`
+    if (props.customClass !== undefined) { dkdll += `\n  <string class="customClass">${props.customClass.replaceAll('\n', ' ')}</string>` }
+    if (props.content !== undefined)     { dkdll += `\n  <lm-html class="content">${`${props.content}`.replaceAll('\n', ' ')}</lm-html>` }
+    if (props.size !== undefined)        { dkdll += `\n  <string class="size">${props.size}</string>` }
+    if (props.secondary !== undefined)   { dkdll += `\n  <boolean class="secondary">${props.secondary}</boolean>` }
+    if (props.squared !== undefined)     { dkdll += `\n  <boolean class="squared">${props.squared}</boolean>` }
+    if (props.disabled !== undefined)    { dkdll += `\n  <boolean class="disabled">${props.disabled}</boolean>` }
+    if (props.iconContent !== undefined) { dkdll += `\n  <lm-html class="iconContent">${`${props.iconContent}`.replaceAll('\n', ' ')}</lm-html>` }
+    if (props.iconFirst !== undefined)   { dkdll += `\n  <boolean class="iconFirst">${props.iconFirst}</boolean>` }
+    // Handlers
+    // delete props.onClick;
+    const schemeOnClick = (schemeOutput as any).onClick as string[] | undefined
+    if (schemeOnClick !== undefined)     { dkdll += `\n  <array class="onClick">${schemeOnClick
+      .map(handlerName => `<string>${handlerName}</string>`)
+      .join('\n    ')
+    }</array>` }
+
+    dkdll += `\n</comp>`
+    return { props, dkdll }
   }} />

@@ -20,9 +20,9 @@ export default class CodeHighlight extends Component<Props> {
     } else {
       render(<>{props.toHighlight}</>, fakeDiv)
     }
-    let formatted = fakeDiv.innerHTML
+    let toHighlight = fakeDiv.innerHTML
     const highlighted = prism.highlight(
-      formatted,
+      toHighlight,
       props.grammar,
       props.language
     )

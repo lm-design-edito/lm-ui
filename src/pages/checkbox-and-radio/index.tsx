@@ -38,4 +38,5 @@ export const Content = () => <CompPage
     if (props.error !== undefined)        { dkdll += `\n  <boolean class="error">${props.error}</boolean>` }
     dkdll += `\n</comp>`
     return { props, dkdll }
-  }} />
+  }}
+  htmlTransform={i => i} />

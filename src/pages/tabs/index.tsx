@@ -87,4 +87,5 @@ export const Content = () => <CompPage
     dkdll += `\n</comp>`
 
     return { props, dkdll }
-  }} />
+  }}
+  htmlTransform={i => i} />

@@ -35,4 +35,5 @@ export const Content = () => <CompPage
     if (props.defaultChecked !== undefined) { dkdll += `\n  <boolean class="defaultChecked">${props.defaultChecked}</boolean>` }
     dkdll += `\n</comp>`
     return { props, dkdll }
-  }} />
+  }}
+  htmlTransform={i => i} />

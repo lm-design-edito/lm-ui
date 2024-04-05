@@ -1,14 +1,18 @@
 export default function htmlFormat (htmlString: string): string {
   const fakeDiv = document.createElement('div')
   fakeDiv.innerHTML = htmlString
-  return [...fakeDiv.children].map(child => formatNode(child, 0)).join('\n')
+  const output = [...fakeDiv.childNodes]
+    .map(child => formatNode(child, 0))
+    // .filter(content => content !== '')
+    .join('\n')
+  return output
 }
 
 function formatNode (node: Node, indentationDepth: number = 0): string {
   const spaces = (' ').repeat(2 * indentationDepth)
   if (node.nodeType === Node.TEXT_NODE) {
     const { textContent } = node
-    if (textContent === null) return ''
+    if (textContent === null || textContent.trim() === '') return ''
     return `${spaces}${textContent.trim()}`
   }
   if (node.nodeType === Node.ELEMENT_NODE) {

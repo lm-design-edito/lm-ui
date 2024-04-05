@@ -7,6 +7,7 @@ import esbuild from 'esbuild'
 import { debounce } from 'throttle-debounce'
 import { sassPlugin, postcssModules } from 'esbuild-sass-plugin'
 import inlineImageModule from 'esbuild-plugin-inline-image'
+import listSubpaths from '@design-edito/tools/utils/node/list-subpaths/index.js'
 
 const inlineImagePulgin = inlineImageModule as unknown as typeof inlineImageModule.default
 
@@ -115,7 +116,6 @@ const stylesSrcPath = path.join(process.cwd(), 'public/styles')
 const stylesDstPath = path.join(process.cwd(), 'dist/styles')
 const stylesWatcher = chokidar.watch(stylesSrcPath, { persistent: true })
 const singleStyleBundler = async (src: string, dest: string) => {
-  console.log(src)
   try {
     const result = sass.compile(src, { style: 'compressed' })
     await fse.ensureDir(path.dirname(dest))
@@ -128,22 +128,24 @@ const singleStyleBundler = async (src: string, dest: string) => {
 }
 const stylesBundler = async () => {
   console.log('Building styles...')
-  const files = await fs.readdir(stylesSrcPath)
-  console.log(files)
-  await Promise.all(files.map(async file => {
-    if (file.endsWith('.scss')) {
-      const srcFile = path.join(stylesSrcPath, file)
-      const dstFile = path.join(stylesDstPath, file.replace('.scss', '.css'))
-      await singleStyleBundler(srcFile, dstFile)
-    }
+  const scssFiles = await listSubpaths(stylesSrcPath, {
+    directories: false,
+    symlinks: false,
+    dedupeSimlinksContents: true,
+    filter: filePath => filePath.endsWith('.scss')
+  })
+  await Promise.all(scssFiles.map(async filePath => {
+    const relToSrcPath = path.relative(stylesSrcPath, filePath)
+    const dstFile = path.join(stylesDstPath, relToSrcPath.replace('.scss', '.css'))
+    await singleStyleBundler(filePath, dstFile)
   }))
-  console.log('Built styles.', files.length)
+  console.log('Built styles.')
 }
 
 const debouncedStylesBundler = debounce(200, stylesBundler, { atBegin: false })
 
 debouncedStylesBundler()
-// stylesWatcher
-//   .on('add', debouncedStylesBundler)
-//   .on('change', debouncedStylesBundler)
-//   .on('unlink', debouncedStylesBundler)
+stylesWatcher
+  .on('add', debouncedStylesBundler)
+  .on('change', debouncedStylesBundler)
+  .on('unlink', debouncedStylesBundler)

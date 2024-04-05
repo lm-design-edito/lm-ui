@@ -53,4 +53,12 @@ export const Content = () => <CompPage
 
     dkdll += `\n</comp>`
     return { props, dkdll }
+  }}
+  htmlTransform={htmlString => {
+    let returned: string = ''
+    returned += `<!-- Structure -->`
+    returned += htmlString + '\n'
+    returned += `<!-- Styles -->`
+    returned += `<link rel="stylesheet" href="http://some.url.com/file.css">`
+    return returned
   }} />

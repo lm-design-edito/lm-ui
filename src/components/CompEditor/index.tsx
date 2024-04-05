@@ -24,6 +24,7 @@ export type Props<C extends ComponentType<any>> = {
   initialProps: PropsOf<C>
   scheme: Scheme.Scheme
   schemeTransform: (schemeOutput: JsonValue) => SchemeTransformationsOutput<C>
+  htmlTransform: (htmlString: string) => string
 }
 
 type State<C extends ComponentType<any>> = {
@@ -70,7 +71,9 @@ export default class CompEditor<C extends ComponentType<any>> extends Component<
     const fakeDiv = document.createElement('div')
     const child = <thisProps.component {...props} />
     render(child, fakeDiv)
-    const html = format(fakeDiv.innerHTML)
+    const rawHtml = fakeDiv.innerHTML
+    const transformedHtml = thisProps.htmlTransform(rawHtml)
+    const html = transformedHtml
     return { child, props, html, dkdll }
   }
 

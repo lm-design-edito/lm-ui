@@ -9,6 +9,7 @@ type Props<C extends ComponentType<any>> = {
   childComp: C
   scheme: Scheme.Scheme
   schemeTransform: CompEditorProps<C>['schemeTransform']
+  htmlTransform: (htmlString: string) => string
 }
 
 export default class CompPage<C extends ComponentType<any>> extends Component<Props<C>> {
@@ -25,7 +26,8 @@ export default class CompPage<C extends ComponentType<any>> extends Component<Pr
           component={props.childComp}
           initialProps={props.scheme.fallback as PropsOf<C>}
           scheme={props.scheme}
-          schemeTransform={props.schemeTransform} />
+          schemeTransform={props.schemeTransform}
+          htmlTransform={props.htmlTransform} />
       </div>
     </div>
   }

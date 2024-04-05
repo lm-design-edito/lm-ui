@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "find . -name \".DS_Store\" -type f -delete",
     "build-scripts": "npx tsc --project ./scripts/tsconfig.json",
-    "build-src": "npm run build-scripts && node ./scripts/build.js",
+    "build-src": "npm run build-scripts && node ./.scripts/build.js",
     "serve": "npx http-server ./dist --port 8080 --cors -c-1",
     "start": "npx concurrently -n 'clean,build,serve' 'npm run clean' 'npm run build-src' 'npm run serve'"
   },
@@ -25,6 +25,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.17",
     "@types/prismjs": "^1.26.3",
+    "@types/throttle-debounce": "^5.0.2",
     "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.20.0",
@@ -35,6 +36,7 @@
     "postcss": "^8.4.35",
     "postcss-modules": "^6.0.0",
     "sass": "^1.70.0",
+    "throttle-debounce": "^5.0.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {

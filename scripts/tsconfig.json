@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./",
+    "outDir": "../.scripts",
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",

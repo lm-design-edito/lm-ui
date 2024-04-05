@@ -7,15 +7,7 @@ export const handlersScheme: Scheme.Scheme = {
       optional: true,
       scheme: {
         fallback: '',
-        string: {
-          rule: str => {
-            const validated = str
-              .trim()
-              .replace(/[^\w]/g, '')
-              .replace(/^\d+/g, '')
-            return makeValidationSuccess(validated, str)
-          }
-        },
+        string: true,
       }
     }))
   }

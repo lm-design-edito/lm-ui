@@ -27,3 +27,16 @@
 .section__card a {
   cursor: pointer;
 }
+
+.section__content-name {
+  margin-bottom: var(--lm-texts-scale-level-4);
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+}
+
+.section__content {
+  background-color: var(--crypt-c-elevation-1);
+  margin-top: var(--lm-texts-scale-level-12);
+  margin-bottom: var(--lm-texts-scale-level-16);
+  padding: var(--lm-texts-scale-level-4);
+}

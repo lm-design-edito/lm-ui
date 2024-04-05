@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "module": "ES6",
+    "target": "ES3",
+    "lib": ["ESNext", "DOM"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "../../dist/icons",
+    "declaration": true,
+    "moduleResolution": "Node",
+    "rootDir": ".",
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["**/*"],
+  "exclude": [
+    "../../node_modules",
+    "../dist"
+  ]
+}
+
+

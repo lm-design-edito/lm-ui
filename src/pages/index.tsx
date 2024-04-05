@@ -6,20 +6,38 @@ import * as tabsData from './tabs'
 import * as toggleData from './toggle'
 import * as checkboxAndRadioData from './checkbox-and-radio'
 
-export type Page = {
-  id: string,
+type AnyPage = {
+  id: string
   name: string | VNode
-  thumb: string | VNode
-  thumb_wide?: string | VNode
   content: string | VNode
 }
 
-export type PageGroup = {
+type CardPage = AnyPage & {
+  thumb: string | VNode
+  thumb_wide?: string | VNode
+}
+
+type ContentPage = AnyPage & {}
+
+export type Page = CardPage | ContentPage
+
+type AnyPageGroup = {
   id: string,
   name: string | VNode
-  cardsPerLine: number
-  pages: Page[]
 }
+
+type CardsPageGroup = AnyPageGroup & {
+  type: 'cards'
+  cardsPerLine: number
+  pages: CardPage[]
+}
+
+type ContentPageGroup = AnyPageGroup & {
+  type: 'content'
+  pages: ContentPage[]
+}
+
+export type PageGroup = CardsPageGroup | ContentPageGroup
 
 export const pageGroups: PageGroup[] = [{
 
@@ -29,6 +47,7 @@ export const pageGroups: PageGroup[] = [{
 
   id: 'components',
   name: 'Components',
+  type: 'cards',
   cardsPerLine: 2,
   pages: [{
     id: scrllgngnData.id,
@@ -49,6 +68,7 @@ export const pageGroups: PageGroup[] = [{
 
   id: 'ui',
   name: 'UI',
+  type: 'cards',
   cardsPerLine: 3,
   pages: [{
     id: buttonData.id,
@@ -79,7 +99,40 @@ export const pageGroups: PageGroup[] = [{
 
   id: 'icons',
   name: 'Icons',
-  cardsPerLine: 3,
+  type: 'content',
+  pages: [{
+    id: 'some-icon',
+    name: 'SomeIcon',
+    content: <>I am an icon</>
+  }, {
+    id: 'some-ico2n',
+    name: 'SomeIco2n',
+    content: <>I am an icon</>
+  }, 
+  {
+    id: 'some-ico3n',
+    name: 'SomeIc3on',
+    content: <>I am an icon</>
+  }]
+}, {
+
+  /* * * * * * * * * * * * * * * * *
+   * FONTS
+   * * * * * * * * * * * * * * * * */
+
+  id: 'fonts',
+  name: 'Fonts',
+  type: 'content',
+  pages: []
+}, {
+
+  /* * * * * * * * * * * * * * * * *
+   * COLORS
+   * * * * * * * * * * * * * * * * */
+
+  id: 'colors',
+  name: 'Colors',
+  type: 'content',
   pages: []
 }]
 

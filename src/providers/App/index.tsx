@@ -8,6 +8,7 @@ import Header from 'components/Header'
 import ColorModeToggler from 'components/ColorModeToggler'
 import styles from './styles.module.scss'
 import './styles.scss'
+import isRecord from '@design-edito/tools/utils/agnostic/is-record/index.js'
 
 const defaultScrollBarWidth = getBrowserDefaultScrollbarWidth()
 
@@ -16,18 +17,48 @@ type Props = {}
 type State = {
   currentPageData: Page | null
   isDarkmode: boolean
+  iconsRegistryData: Record<string, string> | null
+  iconsRegistryLoading: boolean
+  iconsRegistryError: Error | null
 }
 
 export default class App extends Component<Props, State> {
   state: State = {
     currentPageData: null,
-    isDarkmode: false
+    isDarkmode: false,
+    iconsRegistryData: null,
+    iconsRegistryLoading: true,
+    iconsRegistryError: null
   }
 
   constructor (props: Props) {
     super(props)
+    this.fetchIconsRegistry = this.fetchIconsRegistry.bind(this)
     this.togglePage = this.togglePage.bind(this)
     this.toggleDarkmode = this.toggleDarkmode.bind(this)
+  }
+
+  componentDidMount(): void {
+    this.fetchIconsRegistry()
+  }
+
+  async fetchIconsRegistry (): Promise<void> {
+    this.setState({ iconsRegistryLoading: true })
+    const demoPageUrl = new URL(window.location.href)
+    const registryUrl = new URL('/icons/registry.json', demoPageUrl)
+    const response = await window.fetch(registryUrl)
+    const data = await response.json()
+    const isValid = isRecord(data) && Object.values(data).every(val => typeof val === 'string')
+    if (!isValid) return this.setState({
+      iconsRegistryData: null,
+      iconsRegistryLoading: false,
+      iconsRegistryError: new Error(`Registry must be a JSON formatted file of shape Record<string, string> @ ${registryUrl.toString()}`)
+    })
+    return this.setState({
+      iconsRegistryData: data as Record<string, string>,
+      iconsRegistryLoading: false,
+      iconsRegistryError: null
+    })
   }
 
   togglePage (page: Page | null) {
@@ -54,7 +85,8 @@ export default class App extends Component<Props, State> {
       ...defaultContext,
       togglePage: this.togglePage,
       toggleDarkmode: this.toggleDarkmode,
-      currentPage
+      currentPage,
+      iconsRegistryData: state.iconsRegistryData
     }
 
     const wrapperClasses = [styles['wrapper']]
@@ -82,7 +114,11 @@ export default class App extends Component<Props, State> {
         
         {/* Home */}
         <div className={styles['home-slot']}>
-          <Home />
+          {(() => {
+            if (state.iconsRegistryLoading) return <>Loading...</>
+            if (state.iconsRegistryError) return <code>{state.iconsRegistryError.message}</code>
+            return <Home />
+          })()}
         </div>
         
         {/* Side panel */}

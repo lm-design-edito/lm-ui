@@ -1,4 +1,5 @@
 import { VNode } from 'preact'
+import IconsBoard from 'consumers/IconsBoard'
 import * as audioquoteData from './audioquote'
 import * as scrllgngnData from './scrllgngn'
 import * as buttonData from './button'
@@ -103,16 +104,7 @@ export const pageGroups: PageGroup[] = [{
   pages: [{
     id: 'some-icon',
     name: 'SomeIcon',
-    content: <>I am an icon</>
-  }, {
-    id: 'some-ico2n',
-    name: 'SomeIco2n',
-    content: <>I am an icon</>
-  }, 
-  {
-    id: 'some-ico3n',
-    name: 'SomeIc3on',
-    content: <>I am an icon</>
+    content: <IconsBoard />
   }]
 }, {
 

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/lm-design-edito/lm-ui#readme",
   "devDependencies": {
-    "@design-edito/tools": "^0.0.19",
+    "@design-edito/tools": "^0.0.28",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.17",
     "@types/prismjs": "^1.26.3",
@@ -41,7 +41,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@design-edito/new-app": "^1.0.0-delta.9",
+    "@design-edito/new-app": "^1.0.0-delta.17",
     "highlight.js": "^11.9.0",
     "html-format": "^1.1.6",
     "preact": "^10.19.4",

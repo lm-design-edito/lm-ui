@@ -8,6 +8,7 @@ import { debounce } from 'throttle-debounce'
 import { sassPlugin, postcssModules } from 'esbuild-sass-plugin'
 import inlineImageModule from 'esbuild-plugin-inline-image'
 import listSubpaths from '@design-edito/tools/utils/node/list-subpaths/index.js'
+import readWriteFile from '@design-edito/tools/utils/node/read-write-file/index.js'
 
 const inlineImagePulgin = inlineImageModule as unknown as typeof inlineImageModule.default
 
@@ -78,9 +79,10 @@ fontsBundler().then(() => fontsWatcher
 
 // Bundle public/icons to dist/icons
 const iconsSrcPath = path.join(process.cwd(), 'public/icons')
-const iconsSrcIndexPath = path.join(iconsSrcPath, 'index.ts')
+const iconsSrcRegistryPath = path.join(iconsSrcPath, 'registry.json')
 const iconsSrcAssetsPath = path.join(iconsSrcPath, 'assets')
 const iconsDstPath = path.join(process.cwd(), 'dist/icons')
+const iconsDstRegistryPath = path.join(iconsDstPath, 'registry.json')
 const iconsDstAssetsPath = path.join(iconsDstPath, 'assets')
 const iconsWatcher = chokidar.watch(iconsSrcPath, { persistent: true })
 const iconsBundler = async () => {
@@ -88,14 +90,14 @@ const iconsBundler = async () => {
   try {
     await fs.rm(iconsDstPath, { recursive: true, force: true })
     await fse.mkdir(iconsDstPath, { recursive: true })
-    await esbuild.build({
-      entryPoints: [iconsSrcIndexPath],
-      outdir: iconsDstPath,
-      bundle: true,
-      minify: true,
-      sourcemap: true,
-      target: 'es6'
-    })
+    await fse.copy(iconsSrcRegistryPath, iconsDstRegistryPath, { overwrite: true })
+    await readWriteFile(iconsDstRegistryPath, content => {
+      const stringContent = typeof content === 'string' ? content : content.toString()
+      const editedStringContent = JSON.stringify(JSON.parse(stringContent))
+      return typeof content === 'string'
+        ? editedStringContent
+        : Buffer.from(editedStringContent, 'utf-8')
+    }, { encoding: 'utf-8' })
     await fse.copy(iconsSrcAssetsPath, iconsDstAssetsPath, { overwrite: true })
     console.log('Built icons.')
   } catch (err) {

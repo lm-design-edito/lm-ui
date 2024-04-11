@@ -9,6 +9,7 @@ export type AppContextType = {
   getPageGroup: typeof getPageGroup
   getPage: typeof getPage
   currentPage: Page | null
+  iconsRegistryData: Record<string, string> | null
 }
 
 export const defaultContext: AppContextType = {
@@ -17,7 +18,8 @@ export const defaultContext: AppContextType = {
   pageGroups,
   getPageGroup,
   getPage,
-  currentPage: null
+  currentPage: null,
+  iconsRegistryData: null
 }
 
 const AppContext = createContext<AppContextType>(defaultContext)

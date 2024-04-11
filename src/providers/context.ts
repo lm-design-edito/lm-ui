@@ -9,7 +9,7 @@ export type AppContextType = {
   getPageGroup: typeof getPageGroup
   getPage: typeof getPage
   currentPage: Page | null
-  iconsRegistryData: Record<string, string> | null
+  iconsRegistryData: Record<string, string[]> | null
 }
 
 export const defaultContext: AppContextType = {

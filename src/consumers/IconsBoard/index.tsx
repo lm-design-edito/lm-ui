@@ -9,23 +9,17 @@ export default class IconsBoard extends Component {
       {context => {
         const { iconsRegistryData } = context
         if (iconsRegistryData === null) return <>No icons !</>
-        return <>
-          {Object.entries(iconsRegistryData).map(([name, description]) => {
+        return <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {Object.entries(iconsRegistryData).map(([name, [description, category]]) => {
             const iconUrl = Icons.getUrlFromName(name)
-            return <Icon
-              url={iconUrl}
-              description={description} />
+            return <div style={{ padding: 32 }}>
+              {category}
+              <Icon
+                url={iconUrl}
+                description={description} />
+            </div>
           })}
-          —————
-          {Object.entries(iconsRegistryData).map(([name, description]) => {
-            const iconUrl = Icons.getUrlFromName(name)
-            return <Icon
-              url={iconUrl}
-              description={description}
-              asImg={true}
-              maskColor='red' />
-          })}
-        </>
+        </div>
       }}
     </AppContext.Consumer>
   }

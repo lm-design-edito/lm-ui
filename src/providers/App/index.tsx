@@ -17,7 +17,7 @@ type Props = {}
 type State = {
   currentPageData: Page | null
   isDarkmode: boolean
-  iconsRegistryData: Record<string, string> | null
+  iconsRegistryData: Record<string, Array<string>> | null
   iconsRegistryLoading: boolean
   iconsRegistryError: Error | null
 }
@@ -48,14 +48,15 @@ export default class App extends Component<Props, State> {
     const registryUrl = new URL('/icons/registry.json', demoPageUrl)
     const response = await window.fetch(registryUrl)
     const data = await response.json()
-    const isValid = isRecord(data) && Object.values(data).every(val => typeof val === 'string')
+    console.log(data)
+    const isValid = isRecord(data) && Object.values(data).every(val => Array.isArray(val) && val.every(elt => typeof elt === 'string'))
     if (!isValid) return this.setState({
       iconsRegistryData: null,
       iconsRegistryLoading: false,
-      iconsRegistryError: new Error(`Registry must be a JSON formatted file of shape Record<string, string> @ ${registryUrl.toString()}`)
+      iconsRegistryError: new Error(`Registry must be a JSON formatted file of shape Record<string, string[]> @ ${registryUrl.toString()}`)
     })
     return this.setState({
-      iconsRegistryData: data as Record<string, string>,
+      iconsRegistryData: data as Record<string, string[]>,
       iconsRegistryLoading: false,
       iconsRegistryError: null
     })

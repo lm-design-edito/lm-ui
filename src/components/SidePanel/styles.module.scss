@@ -21,13 +21,22 @@
   margin-bottom: var(--lm-texts-scale-level-28);
 }
 
-.cover-slot-no-click-layer {
+.cover-slot::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
+
+// .cover-slot-no-click-layer {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+// }
 
 .content-slot {
   padding: 0 var(--lm-texts-scale-level-13);

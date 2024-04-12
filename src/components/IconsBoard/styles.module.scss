@@ -1,0 +1,24 @@
+.wrapper {
+  margin-bottom: var(--lm-texts-large-scale-level-2);
+}
+
+.category {
+  margin-bottom: var(--lm-texts-scale-level-4);
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 500;
+  font-size: var(--lm-texts-scale-level-6);
+}
+
+.board {
+  display: 'flex';
+  flex-wrap: 'wrap';
+  background-color: var(--crypt-c-elevation-1);
+  margin-top: var(--lm-texts-scale-level-12);
+  margin-bottom: var(--lm-texts-scale-level-16);
+  padding: var(--lm-texts-scale-level-4);
+}
+
+.icon {
+  padding: var(--lm-texts-scale-level-8);
+  display: inline-block;
+}

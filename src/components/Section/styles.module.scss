@@ -1,0 +1,12 @@
+.wrapper {
+
+}
+
+.name {
+  color: var(--crypt-c-default-texts);
+  margin-top: calc(1.6 * var(--lm-texts-large-scale-level-4));
+  margin-bottom: var(--lm-texts-large-scale-level-2);
+  font-family: var(--lmui-ff-marr-sans);
+  font-weight: 600;
+  font-size: var(--lm-texts-scale-level-14);
+}

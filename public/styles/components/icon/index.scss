@@ -30,9 +30,24 @@
 //   --lmui-ic-black: var(--lmui-ic-default-light); /* Black in darkmode, black in lightmode */
 // }
 
-svg.lmui-icon .fill-1 { fill: black; }
-svg.lmui-icon .fill-2 { fill: rgb(0, 0, 0, .7); }
-svg.lmui-icon .fill-3 { fill: rgb(0, 0, 0, .3); }
+@include mixins.light-mode {
+  --lmui-c-icon-fill-1: var(--lmui-c-slate-dark);
+  --lmui-c-icon-fill-2: var(--lmui-c-slate-darker);
+  --lmui-c-icon-fill-3: var(--lmui-c-slate-light);
+  --lmui-c-icon-background: transparent;
+}
+
+@include mixins.dark-mode {
+  --lmui-c-icon-fill-1: var(--lmui-c-white);
+  --lmui-c-icon-fill-2: var(--lmui-c-snow-light);
+  --lmui-c-icon-fill-3: var(--lmui-c-snow-dark);
+  --lmui-c-icon-background: transparent;
+}
+
+svg.lmui-icon { background-color: var(--lmui-c-icon-background); }
+svg.lmui-icon .fill-1 { fill: var(--lmui-c-icon-fill-1); }
+svg.lmui-icon .fill-2 { fill: var(--lmui-c-icon-fill-1); }
+svg.lmui-icon .fill-3 { fill: var(--lmui-c-icon-fill-1); }
 
 .lmui-icon.lmui-icon_as-img.lmui-icon_with-mask {
   display: inline-block;

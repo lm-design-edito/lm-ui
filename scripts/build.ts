@@ -15,7 +15,7 @@ const inlineImagePulgin = inlineImageModule as unknown as typeof inlineImageModu
 // Bundle src to dist/demo
 const buildOptions: esbuild.BuildOptions = {
   format: 'esm',
-  entryPoints: [path.join(process.cwd(), 'src/app.tsx')],
+  entryPoints: [path.join(process.cwd(), 'src/app/index.tsx')],
   bundle: true,
   outfile: path.join(process.cwd(), 'dist/demo/app.js'),
   minify: true,

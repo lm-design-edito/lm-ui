@@ -20,5 +20,6 @@
       "DOM.Iterable"
     ],
     "baseUrl": "./"
-  }
+  },
+  "include": ["**/*"]
 }

@@ -4,9 +4,10 @@
   background-color: var(--crypt-c-elevation-1);
   border: 2px solid var(--crypt-c-main-borders);
   border-radius: 4px;
+  cursor: pointer;
 }
 
-.thumb {
+.cover {
   width: 100%;
   aspect-ratio: var(--aspect-ratio);
   display: flex;
@@ -15,7 +16,7 @@
   padding: var(--lm-texts-scale-level-8);
 }
 
-.thumb > * {
+.cover > * {
   max-width: 100%;
 }
 
